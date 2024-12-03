@@ -1,7 +1,3 @@
 ja:
   enums:
-    user_group_combination:
-      status:
-        pending: 申請中
-        participating: 参加中
-        reject: 拒否
+    
