@@ -1,0 +1,2 @@
+class UserGroupCombination < ApplicationRecord
+end
