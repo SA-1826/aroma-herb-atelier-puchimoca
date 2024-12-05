@@ -46,8 +46,7 @@ ActiveRecord::Schema.define(version: 2024_12_04_151909) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", unique: true
   end
 
   create_table "groups", force: :cascade do |t|
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 2024_12_04_151909) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body"], name: "index_groups_on_body"
     t.index ["name"], name: "index_groups_on_name", unique: true
-    t.index ["user_id"], name: "index_groups_on_user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id", unique: true
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 2024_12_04_151909) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body"], name: "index_posts_on_body"
     t.index ["title"], name: "index_posts_on_title"
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", unique: true
   end
 
   create_table "user_group_combinations", force: :cascade do |t|
