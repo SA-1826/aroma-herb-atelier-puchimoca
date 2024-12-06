@@ -7,8 +7,9 @@ class CreateInquiries < ActiveRecord::Migration[6.1]
       t.integer :status, null: false, default: 0
 
       t.timestamps
-
-      t.index [:user_id, :status], unique: true
     end
+
+    add_index :inquiries, :user_id
+    add_index :inquiries, :status
   end
 end
