@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin - Aroma</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/9af748410a.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <% if admin_signed_in? %>
+        <%= link_to '講座一覧', admin_programs_path %>
+        <%= link_to 'カテゴリー一覧', admin_categories_path %>
+        <%= link_to '投稿一覧', admin_posts_path %>
+        <%= link_to 'コメント一覧', admin_comments_path %>
+        <%= link_to 'ユーザー一覧', admin_users_path %>
+        <%= link_to 'グループ一覧', admin_groups_path %>
+        <%= link_to '問い合わせ一覧', admin_inquiries_path %>
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ログイン', new_admin_session_path %>
+      <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

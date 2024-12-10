@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'groups/new'
-  get 'groups/index'
-  get 'groups/show'
-  get 'groups/edit'
-  get 'inquiries/new'
-  get 'inquiries/thanks'
   devise_for :admin, skip: [:registrations, :password], controllers: {
     sessions: 'admin/sessions'
   }
@@ -31,6 +25,8 @@ Rails.application.routes.draw do
   resources :inquiries, only: [:new, :create]
   get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
   resources :groups, except: :destroy
+  resources :programs, only: [:index, :show]
+  get '/search' => 'searches#search', as: "search"
 
   root to: "homes#home"
   get '/about' => 'homes#about', as: "about"
