@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'groups/new'
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/edit'
   get 'inquiries/new'
   get 'inquiries/thanks'
   devise_for :admin, skip: [:registrations, :password], controllers: {
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :inquiries, only: [:new, :create]
   get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
+  resources :groups, except: :destroy
 
   root to: "homes#home"
   get '/about' => 'homes#about', as: "about"
