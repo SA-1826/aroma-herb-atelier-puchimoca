@@ -15,18 +15,19 @@ Rails.application.routes.draw do
     get '/searches' => 'searches#search', as: "searches"
   end
 
-
-  devise_for :users
-  resources :users, only: [:edit, :update, :show]
-  get '/mypage' => 'users#mypage', as: "mypage"
-  patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"
-  resources :posts
-  resources :comments, only: [:create, :destroy]
-  resources :inquiries, only: [:new, :create]
-  get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
-  resources :groups, except: :destroy
-  resources :programs, only: [:index, :show]
-  get '/search' => 'searches#search', as: "search"
+  scope module: :public do
+    devise_for :users
+    resources :users, only: [:edit, :update, :show]
+    get '/mypage' => 'users#mypage', as: "mypage"
+    patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"
+    resources :posts
+    resources :comments, only: [:create, :destroy]
+    resources :inquiries, only: [:new, :create]
+    get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
+    resources :groups, except: :destroy
+    resources :programs, only: [:index, :show]
+    get '/search' => 'searches#search', as: "search"
+  end
 
   root to: "homes#home"
   get '/about' => 'homes#about', as: "about"
