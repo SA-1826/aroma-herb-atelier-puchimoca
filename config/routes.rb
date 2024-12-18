@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :admin, skip: [:registrations, :password], controllers: {
-    sessions: 'admin/sessions'
+  devise_for :users, controllers: {
+   registrations: 'public/users/registrations',
+   sessions: 'public/users/sessions'
+  }
+  devise_for :admins, path: 'admin', skip: [:registrations, :password], controllers: {
+    sessions: 'admin/admins/sessions'
   }
 
   namespace :admin do
+    root 'inquiries#index'
     resources :users, only: [:index, :show, :edit, :update, :withdraw]
     patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"
     resources :posts, only: [:index, :show, :destroy]
@@ -16,7 +21,6 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    devise_for :users
     resources :users, only: [:edit, :update, :show]
     get '/mypage' => 'users#mypage', as: "mypage"
     patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"
