@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body"], name: "index_groups_on_body"
     t.index ["name"], name: "index_groups_on_name", unique: true
-    t.index ["user_id"], name: "index_groups_on_user_id", unique: true
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body"], name: "index_posts_on_body"
     t.index ["title"], name: "index_posts_on_title"
-    t.index ["user_id"], name: "index_posts_on_user_id", unique: true
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "programs", force: :cascade do |t|
