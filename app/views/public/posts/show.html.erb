@@ -1,4 +1,12 @@
 <h1>投稿詳細</h1>
+<span>投稿者</span>
+<span> | </span>
+<span>
+  <%= link_to user_path(@post.user) do %>
+    <%= @post.user.name %>
+  <% end %>
+</span>
+
 <h5>タイトル</h5>
 <p><%= @post.title %></p>
 

@@ -1,6 +1,32 @@
 <h1>コミュニティ</h1>
-<% @posts.each do |post| %>
-  <%= link_to post_path(post) do %>
-    <%= post.title %>
-  <% end %>
-<% end %>
+  <h3>投稿一覧</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>投稿者</th>
+          <th>投稿日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.updated_at %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
