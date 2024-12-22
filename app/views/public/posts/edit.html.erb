@@ -1,2 +1,14 @@
 <h1>投稿編集</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<%= form_with model: @post do |f| %>
+  <h5>タイトル</h5>
+  <%= f.text_field :title %>
+
+  <h5>本文</h5>
+  <%= f.text_area :body %>
+
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '削除', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<%= link_to '戻る', post_path(@post) %>
