@@ -13,18 +13,46 @@
 
   <body>
     <header>
-      <% if admin_signed_in? %>
-        <%= link_to '講座一覧', admin_programs_path %>
-        <%= link_to 'カテゴリー一覧', admin_categories_path %>
-        <%= link_to '投稿一覧', admin_posts_path %>
-        <%= link_to 'コメント一覧', admin_comments_path %>
-        <%= link_to 'ユーザー一覧', admin_users_path %>
-        <%= link_to 'グループ一覧', admin_groups_path %>
-        <%= link_to '問い合わせ一覧', admin_inquiries_path %>
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'ログイン', new_admin_session_path %>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <span class="navbar-brand">
+            <%= link_to 'アロマ&ハーブ Atelier Puchimoca', root_path, class: 'text-dark' %>
+          </span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '講座一覧', admin_programs_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'カテゴリー一覧', admin_categories_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '投稿一覧', admin_posts_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'コメント一覧', admin_comments_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'グループ一覧', admin_groups_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '問い合わせ一覧', admin_inquiries_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_admin_session_path, class: 'nav-link text-dark' %>
+              </li>
+            <% end %>
     </header>
     <%= yield %>
   </body>
