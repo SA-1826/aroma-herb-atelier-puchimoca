@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def mypage
-    @user = User.find(current_user)
-    @posts = current_user.posts.all
+    @user = current_user
+    @posts = @user.posts.all
   end
 
   def edit
