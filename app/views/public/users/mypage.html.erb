@@ -1,1 +1,10 @@
-<h1>Post#mypage</h1>
+<h1>マイページ</h1>
+
+<div class="row">
+  <div class="user-info col-sm-12 col-md-5 col-lg-4">
+    <%= @user.name %>
+    <%= link_to '会員情報の編集', edit_user_path(@user) %>
+  </div>
+  <div class="user-posts col-sm-12 col-md-7 col-lg-8">
+  </div>
+</div>
