@@ -1,7 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 
 .bg_area {
-  height: 50vh;
+  height: 36vh;
   background-image: url('../images/main-visual.jpg');
   background-size: cover;
+  background-position: center;
+}
+
+.main_visual {
+  height: 35vh;
+  position: center;
+  background-color: rgba(255, 255, 255, 0.7);
 }
