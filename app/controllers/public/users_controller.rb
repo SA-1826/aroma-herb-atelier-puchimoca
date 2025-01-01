@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+
   def mypage
     @user = current_user
     @posts = @user.posts.all
@@ -31,6 +33,13 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(params[:id])
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email)
