@@ -9,12 +9,12 @@
 
           <div class="field mb-2">
             <%= f.label :name, "ハンドルネーム" %><br />
-            <%= f.text_field :name %>
+            <%= f.text_field :name, class: "form-control" %>
           </div>
 
           <div class="field mb-2">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
 
           <div class="field mb-2">
@@ -22,16 +22,16 @@
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> 文字以上)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           </div>
 
           <div class="field mb-2">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           </div>
 
           <div class="actions my-3">
-            <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
+            <%= f.submit "登録する", class: "btn btn-secondary btn-block" %>
           </div>
         <% end %>
 
