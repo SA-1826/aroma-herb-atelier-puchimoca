@@ -10,6 +10,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
 
     add_index :posts, :user_id
     add_index :posts, :title
-    add_index :posts, :body
+    #add_index :posts, :body
   end
 end

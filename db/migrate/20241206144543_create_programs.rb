@@ -10,7 +10,7 @@ class CreatePrograms < ActiveRecord::Migration[6.1]
 
       t.timestamps
 
-      t.index [:title, :body, :start_time], unique: true
+      t.index [:title, :start_time], unique: true
     end
 
     add_index :programs, :admin_id

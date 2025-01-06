@@ -10,6 +10,6 @@ class CreateGroups < ActiveRecord::Migration[6.1]
 
     add_index :groups, :user_id
     add_index :groups, :name, unique: true
-    add_index :groups, :body
+    #add_index :groups, :body
   end
 end
