@@ -4,4 +4,6 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :rememberable
   
          devise authentication_keys: [:email]
+  
+  has_many :programs, dependent: :destroy
 end

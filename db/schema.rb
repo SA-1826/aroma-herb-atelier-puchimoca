@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["body"], name: "index_groups_on_body"
     t.index ["name"], name: "index_groups_on_name", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
@@ -95,7 +94,6 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["body"], name: "index_posts_on_body"
     t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -106,12 +104,14 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "start_time", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "publish_status", default: 0, null: false
+    t.integer "price", default: 0, null: false
+    t.integer "time_required", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_programs_on_admin_id"
     t.index ["category_id"], name: "index_programs_on_category_id"
-    t.index ["title", "body", "start_time"], name: "index_programs_on_title_and_body_and_start_time", unique: true
+    t.index ["title", "start_time"], name: "index_programs_on_title_and_start_time", unique: true
   end
 
   create_table "user_group_combinations", force: :cascade do |t|

@@ -1,29 +1,9 @@
-<h1>講座-編集</h1>
+<h1>講座編集</h1>
+<div class="mb-3 mr-3 text-right">
+  <%= link_to '削除', admin_programs_path(@program), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark" %>
+  <%= link_to '戻る', admin_programs_path(@program), class: "btn btn-secondary" %>
+</div>
 
-<%= form_with model: @program do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+<% submit_label = "更新" %>
+<%= render 'form', program: @program, submit_label: submit_label %>
 
-  <h5>タイトル</h5>
-  <%= f.text_field :title %>
-
-  <h5>内容</h5>
-  <%= f.text_area :body %>
-
-  <h5>開催日</h5>
-  <%= f.date_field :start_time %>
-
-  <h5>開催時間</h5>
-  <%= f.time_field :start_time %>
-	
-  <h6>カテゴリー</h6>
-  <p>後ほど作成</p>
-
-  <h6>公開ステータス</h6>
-  <p>後ほど作成</p>
-
-  <%= f.submit '更新' %>
-<% end %>
-
-<%= link_to '削除', admin_programs_path(@program), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-
-<%= link_to '戻る', admin_programs_path(@program) %>
