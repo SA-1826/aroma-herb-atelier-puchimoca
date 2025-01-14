@@ -1,2 +1,28 @@
-<h1>Admin::Programs#new</h1>
-<p>Find me in app/views/admin/programs/new.html.erb</p>
+<h1>講座-新規作成</h1>
+
+<%= form_with model: @program do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+  <!-- <h5>画像</h5> -->
+  <!-- <%= f.file_field :image, accept: "image/*" %> -->
+
+  <h5>タイトル</h5>
+  <%= f.text_field :title %>
+	
+  <h5>内容</h5>
+  <%= f.text_area :body %>
+
+  <h5>開催日</h5>
+  <%= f.date_field :start_time %>
+
+  <h5>開催時間</h5>
+  <%= f.time_field :start_time %>
+	
+  <h6>カテゴリー</h6>
+  <p>後ほど作成</p>
+
+  <h6>公開ステータス</h6>
+  <p>後ほど作成</p>
+
+  <%= f.submit '作成' %>
+<% end %>

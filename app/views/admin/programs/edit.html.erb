@@ -1,2 +1,29 @@
-<h1>Admin::Programs#edit</h1>
-<p>Find me in app/views/admin/programs/edit.html.erb</p>
+<h1>講座-編集</h1>
+
+<%= form_with model: @program do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+  <h5>タイトル</h5>
+  <%= f.text_field :title %>
+
+  <h5>内容</h5>
+  <%= f.text_area :body %>
+
+  <h5>開催日</h5>
+  <%= f.date_field :start_time %>
+
+  <h5>開催時間</h5>
+  <%= f.time_field :start_time %>
+	
+  <h6>カテゴリー</h6>
+  <p>後ほど作成</p>
+
+  <h6>公開ステータス</h6>
+  <p>後ほど作成</p>
+
+  <%= f.submit '更新' %>
+<% end %>
+
+<%= link_to '削除', admin_programs_path(@program), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<%= link_to '戻る', admin_programs_path(@program) %>
