@@ -3,7 +3,7 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable
   
-         devise authentication_keys: [:email]
+  devise authentication_keys: [:email]
   
   has_many :programs, dependent: :destroy
 end

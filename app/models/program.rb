@@ -4,5 +4,13 @@ class Program < ApplicationRecord
   belongs_to :admin
   belongs_to :category
 
-  enum publish_status: { in_progress: 0, published: 1, private: 2 }
+  enum publish_status: { draft: 0, published: 1, non_public: 2 }
+
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :start_time, presence: true
+  validates :price, presence: true
+  validates :time_required, presence: true
+  validates :publish_status, presence: true
+  validates :category_id, presence: true
 end

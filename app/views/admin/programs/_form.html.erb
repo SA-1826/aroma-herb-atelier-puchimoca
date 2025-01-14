@@ -30,10 +30,10 @@
       <%= f.label :category_id, "カテゴリー" %><br>
       <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "--選択してください--" }, { class: "form-control" } %>
 
-      <h6>公開ステータス</h6>
-      <p>後ほど作成</p>
+      <%= f.label :publish_status, "公開ステータス" %><br>
+      <%= f.select :publish_status, Program.publish_statuses.keys.map { |status| [I18n.t("enums.program.publish_status.#{status}"), status] } %>
 
-      <div class="text-right mr-3">
+      <div class="text-right mr-3 mt-3">
         <%= render 'submit_button', f: f, submit_label: submit_label %>
       </div>
     </div>

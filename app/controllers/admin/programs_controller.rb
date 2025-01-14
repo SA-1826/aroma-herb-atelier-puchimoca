@@ -29,7 +29,7 @@ class Admin::ProgramsController < ApplicationController
     @program = Program.find(params[:id])
     if @program.update(program_params)
       flash[:notice] = "変更を保存しました"
-      redirect_to edit_admin_program(@program)
+      redirect_to edit_admin_program_path(@program)
     else
       flash.now[:notice] = "変更の保存に失敗しました"
       render :edit
@@ -45,6 +45,6 @@ class Admin::ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:image, :category_id, :title, :body, :start_time, :status, :time_required, :price)
+    params.require(:program).permit(:image, :category_id, :title, :body, :start_time, :publish_status, :time_required, :price)
   end
 end

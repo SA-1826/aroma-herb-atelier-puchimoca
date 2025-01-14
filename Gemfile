@@ -59,7 +59,7 @@ gem 'devise'
 
 gem 'rails-i18n', '~> 6.0.0'
 
-gem 'enum_help'
+gem "enum_help"
 
 gem 'dotenv-rails'
 group :production do

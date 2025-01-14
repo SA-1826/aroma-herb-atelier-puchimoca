@@ -16,7 +16,7 @@
       <% @programs.each do |program| %>
         <tr>
           <td>
-            <%= program.status %>
+            <%= "#{I18n.t("enums.program.publish_status.#{program.publish_status}")}" %>
           </td>
           <td>
             <%= link_to edit_admin_program_path(program) do %>
