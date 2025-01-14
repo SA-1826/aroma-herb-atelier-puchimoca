@@ -54,6 +54,11 @@
               </li>
             <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <div class="container mt-5">
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
