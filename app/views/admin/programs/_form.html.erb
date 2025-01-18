@@ -4,7 +4,8 @@
       <%= render 'layouts/error_messages', model: f.object %>
 
       <%= f.label :image, "画像" %>
-      <%= f.file_field :image, accept: "image/*" %><br>
+      <%= f.file_field :image, accept: "image/*", id: "image-upload" %><br>
+      <div id="image-preview"></div>
 
       <br>
 
