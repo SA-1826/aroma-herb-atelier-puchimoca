@@ -14,6 +14,7 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path
     else
       flash.now[:danger] = "カテゴリーの登録に失敗しました"
+      @categories = Category.all
       render :index
     end
   end
@@ -30,8 +31,15 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path
     else
       flash.now[:danger] = "変更の保存に失敗しました"
+      @categories = Category.all
       render :edit
     end
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
+    redirect_to admin_categories_path
   end
 
   private
