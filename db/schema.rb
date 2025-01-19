@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", unique: true
+    t.index ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id"
   end
 
   create_table "groups", force: :cascade do |t|

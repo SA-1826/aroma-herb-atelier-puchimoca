@@ -37,11 +37,18 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    if @post.comments.present?
+      @comments = @post.comments.all
+    else
+      @comments = []
+    end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:notice] = "削除しました"
     redirect_to mypage_path(current_user)
   end
 
