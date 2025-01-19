@@ -1,9 +1,8 @@
 <h1>講座編集</h1>
 <div class="mb-3 mr-3 text-right">
-  <%= link_to '削除', admin_programs_path(@program), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark" %>
-  <%= link_to '戻る', admin_programs_path(@program), class: "btn btn-secondary" %>
+  <%= link_to '削除', admin_program_path(@program), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark" %>
+  <%= link_to '戻る', admin_programs_path, class: "btn btn-secondary" %>
 </div>
 
 <% submit_label = "更新" %>
 <%= render 'form', program: @program, submit_label: submit_label %>
-

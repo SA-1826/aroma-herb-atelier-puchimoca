@@ -34,7 +34,7 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-注意事項含め、後ほど更新予定
+- no-image画像：illustAC, url:https://www.ac-illust.com/main/detail.php?id=24660942&word=NO++IMAGE&data_type=&from_order_history=&downloader_register=success
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
 <!-- - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。 -->
 <!-- - 使用しない場合は、使用素材の項目をREADMEから削除してください。 -->

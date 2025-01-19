@@ -9,6 +9,7 @@ class Admin::ProgramsController < ApplicationController
   def create
     @program = current_admin.programs.build(program_params)
     if @program.save
+      @program.image.attach(params[:program][:image])
       flash[:notice] = "投稿しました"
       redirect_to edit_admin_program_path(@program)
     else
@@ -45,6 +46,6 @@ class Admin::ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:image, :category_id, :title, :body, :start_time, :publish_status, :time_required, :price)
+    params.require(:program).permit(:image, :title, :body, :start_time, :publish_status, :time_required, :price, :category_id)
   end
 end

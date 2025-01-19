@@ -9,9 +9,10 @@
 Admin.create!(email: "admin@test.com", password: "password")
 
 category_names = %w(
-  アロマ
-  ハーブ
-  ワークショップ
+  検定対応ーアロマ
+  検定対応ーハーブ
+  ワークショップーアロマ
+  ワークショップーハーブ
 )
 
 category_names.each do |name|

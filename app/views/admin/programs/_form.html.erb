@@ -3,11 +3,9 @@
     <div class="col-lg-8">
       <%= render 'layouts/error_messages', model: f.object %>
 
+      <%= image_tag program.get_image, size: "100x80", class: "mb-3" %><br>
       <%= f.label :image, "画像" %>
-      <%= f.file_field :image, accept: "image/*", id: "image-upload" %><br>
-      <div id="image-preview"></div>
-
-      <br>
+      <%= f.file_field :image, accept: "image/*", class: "mb-3" %><br>
 
       <%= f.label :title, "講座名" %><br>
       <%= f.text_field :title, class: "form-control" %>
