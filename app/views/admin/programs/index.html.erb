@@ -1,2 +1,39 @@
-<h1>Admin::Programs#index</h1>
-<p>Find me in app/views/admin/programs/index.html.erb</p>
+<h1>講座一覧</h1>
+  <div class="mb-3 mr-3 text-right">
+    <%= link_to '新規作成', new_admin_program_path, class: "btn btn-secondary" %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ステータス</th>
+        <th>タイトル</th>
+        <th>カテゴリー</th>
+        <th>開催日時</th>
+        <th>作成日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @programs.each do |program| %>
+        <tr>
+          <td>
+            <%= "#{I18n.t("enums.program.publish_status.#{program.publish_status}")}" %>
+          </td>
+          <td>
+            <%= link_to edit_admin_program_path(program) do %>
+              <%= program.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= program.category_id %>
+          </td>
+          <td>
+            <%= program.start_time %>
+          </td>
+          <td>
+            <%= program.created_at %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+

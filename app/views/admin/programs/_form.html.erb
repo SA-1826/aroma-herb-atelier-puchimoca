@@ -1,0 +1,42 @@
+<%= form_with model: [:admin, program] do |f| %>
+  <div class="row">
+    <div class="col-lg-8">
+      <%= render 'layouts/error_messages', model: f.object %>
+
+      <%= f.label :image, "画像" %>
+      <%= f.file_field :image, accept: "image/*", id: "image-upload" %><br>
+      <div id="image-preview"></div>
+
+      <br>
+
+      <%= f.label :title, "講座名" %><br>
+      <%= f.text_field :title, class: "form-control" %>
+      
+      <%= f.label :body, "紹介文" %><br>
+      <%= f.text_area :body, class: "form-control" %>
+
+      <%= f.label :start_time, "開催日" %><br>
+      <%= f.date_field :start_time, class: "form-control" %>
+
+      <%= f.label :start_time, "時間" %><br>
+      <%= f.time_field :start_time, class: "form-control" %>
+      
+      <%= f.label :time_required, "所要時間" %><br>
+      <%= f.text_field :time_required, class: "form-control" %>
+
+      <%= f.label :price, "参加費" %><br>
+      <%= f.text_field :price, class: "form-control" %>
+    </div>
+    <div class="col-lg-3 offset-lg-1">
+      <%= f.label :category_id, "カテゴリー" %><br>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "--選択してください--" }, { class: "form-control" } %>
+
+      <%= f.label :publish_status, "公開ステータス" %><br>
+      <%= f.select :publish_status, Program.publish_statuses.keys.map { |status| [I18n.t("enums.program.publish_status.#{status}"), status] } %>
+
+      <div class="text-right mr-3 mt-3">
+        <%= render 'submit_button', f: f, submit_label: submit_label %>
+      </div>
+    </div>
+  </div>
+<% end %>

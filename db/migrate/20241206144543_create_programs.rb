@@ -6,7 +6,9 @@ class CreatePrograms < ActiveRecord::Migration[6.1]
       t.string :title, null: false
       t.text :body, null: false
       t.datetime :start_time, null: false
-      t.integer :status, null: false, default: 0
+      t.integer :publish_status, null: false, default: 0
+      t.integer :price, null: false, default: 0
+      t.integer :time_required, null: false, default: 0
 
       t.timestamps
 

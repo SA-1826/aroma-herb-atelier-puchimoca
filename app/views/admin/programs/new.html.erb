@@ -1,2 +1,8 @@
-<h1>Admin::Programs#new</h1>
-<p>Find me in app/views/admin/programs/new.html.erb</p>
+<h1>講座新規作成</h1>
+<div class="mb-3 mr-3 text-right">
+  <%= link_to '戻る', admin_programs_path, class: "btn btn-secondary" %>
+</div>
+
+<% submit_label = "作成" %>
+<%= render 'form', program: @program, submit_label: submit_label %>
+
