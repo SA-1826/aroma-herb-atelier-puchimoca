@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-lg-8">
       <%= render 'layouts/error_messages', model: f.object %>
-
-      <%= image_tag program.get_image, size: "100x80", class: "mb-3" %><br>
+      <div id="image-preview" class="mb-3">
+        <%= image_tag program.get_image, size: "300x240" %><br>
+      </div>
       <%= f.label :image, "画像" %>
-      <%= f.file_field :image, accept: "image/*", class: "mb-3" %><br>
+      <%= f.file_field :image, accept: "image/*", class: "mb-3", id: 'image-upload' %><br>
 
       <%= f.label :title, "講座名" %><br>
       <%= f.text_field :title, class: "form-control" %>
@@ -38,3 +39,23 @@
     </div>
   </div>
 <% end %>
+
+<script>
+document.getElementById('image-upload').onchange = function(e) {
+  var file = e.target.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function(event) {
+    var img = document.createElement('img');
+    img.src = event.target.result;
+    const preview = document.getElementById('image-preview')
+    preview.innerHTML = "";
+    preview.appendChild(img);
+    const image = document.querySelector("#image-preview img")
+    image.setAttribute('width', '300')
+    image.setAttribute('height', '240')
+  };
+
+  reader.readAsDataURL(file);
+};
+</script>

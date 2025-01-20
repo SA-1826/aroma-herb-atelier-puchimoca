@@ -1,4 +1,5 @@
 class Program < ApplicationRecord
+  scope :publidhed, -> { where(publish_status: "published") }
   has_one_attached :image
 
   belongs_to :admin

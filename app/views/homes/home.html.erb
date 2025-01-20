@@ -1,3 +1,10 @@
 
-<h1>Home</h1>
-<p>admin作成後新着講座を掲載予定</p>
+<div class="row">
+  <div class="col">
+    <h1>Home</h1>
+    <% @programs.each do |program| %>
+        <%= image_tag program.get_image, size: "100x80" %>
+        <%= program.title %>
+    <% end %>
+  </div>
+</div>
