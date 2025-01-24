@@ -7,6 +7,18 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, length: { minimum: 2, maximum: 20}, uniqueness: true, presence: true
   validates :email, presence: true
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name Like ?', content + '%')
+    elsif method == 'backword'
+      User.where('name Like ?', '%' + content)
+    else
+      User.where('name Like ?', '%' + content + '%')
+    end
+  end
 end
