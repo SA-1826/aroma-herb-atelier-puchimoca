@@ -1,6 +1,5 @@
 class Admin::ProgramsController < ApplicationController
   layout 'admin'
-  before_action :authenticate_admin!
   
   def new
     @program = Program.new
