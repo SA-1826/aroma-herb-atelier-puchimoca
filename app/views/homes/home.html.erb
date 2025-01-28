@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col">
     <h1>Home</h1>
-    <% @programs.each do |program| %>
-      <%= image_tag program.get_image, size: "100x80" %>
-      <%= program.title %>
-    <% end %>
+    <%= render 'layouts/new_programs' %>
   </div>
 </div>

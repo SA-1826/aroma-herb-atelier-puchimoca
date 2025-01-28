@@ -1,0 +1,8 @@
+<% @new_programs.each do |program| %>
+  <div class="d-flex flex-wrap flex-lg-nowrap mt-3">
+    <%= link_to program_path(program), class: "d-block" do %>
+      <%= image_tag program.get_image, size: "90x72" %>
+      <%= program.title %>
+    <% end %>
+  </div>
+<% end %>
