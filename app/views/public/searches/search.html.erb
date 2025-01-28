@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+  <%= render 'public/searches/search_form' %>
+</div>
 <% if @model == 'user' %>
 	<h3>ユーザーの検索結果 検索ワード "<%= @content %>"</h3>
   <%= render 'public/users/index', users: @records %>
