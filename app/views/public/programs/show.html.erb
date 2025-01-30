@@ -1,2 +1,15 @@
-<h1>Programs#show</h1>
-<p>Find me in app/views/programs/show.html.erb</p>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <h5>新着講座</h5>
+    <%= render 'layouts/new_programs' %>
+  </div>
+  <div class="col-lg-9">
+    <h4 class="p-3 mb-2" style="background-color: rgba(166, 202, 166, 0.3);">
+      <%= @program.title %>
+    </h4>
+    <div class="text-center">
+      <%= image_tag @program.get_image, size: "300x240" %>
+    </div>
+    <%= @program.body %>
+  </div>
+</div>

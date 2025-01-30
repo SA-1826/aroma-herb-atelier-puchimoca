@@ -9,8 +9,8 @@
       <% @programs.each do |program| %>
         <%= link_to program_path(program) do %>
           <li class="list-group-item list-group-item-action">
-            <div class="bg-success p-2 mb-1 bg-opacity-10">
-              <%= program.title %>
+            <div class="p-2 mb-1" style="background-color: rgba(166, 202, 166, 0.3);">
+              <strong><%= program.title %></strong>
             </div>
             <div class="container">
               <div class="row">
