@@ -7,6 +7,9 @@ class Admin::ProgramsController < ApplicationController
 
   def create
     @program = current_admin.programs.build(program_params)
+    if params[:body].present?
+      @program.body = params[:body].gsub(/\R/, "<br>")
+    end
     if @program.save
       @program.image.attach(params[:program][:image])
       flash[:notice] = "投稿しました"
@@ -27,6 +30,9 @@ class Admin::ProgramsController < ApplicationController
 
   def update
     @program = Program.find(params[:id])
+    if params[:body].present?
+      @program.body = params[:body].gsub(/\R/, "<br>")
+    end
     if @program.update(program_params)
       flash[:notice] = "変更を保存しました"
       redirect_to edit_admin_program_path(@program)
