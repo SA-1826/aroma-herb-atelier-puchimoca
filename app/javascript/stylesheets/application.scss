@@ -1,14 +1,22 @@
 @use '~bootstrap/scss/bootstrap';
 
+a {
+  color: rgb(3, 3, 3);
+}
+
+.navbar {
+  background-color: rgba(165, 143, 134, 0.1);
+}
+
 .bg_area {
-  height: 36vh;
+  height: 40%;
   background-image: url('../images/main-visual.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .main_visual_contents {
-  height: 35vh;
+  height: 38%;
   position: center;
   background-color: rgba(255, 255, 255, 0.7);
 }
@@ -17,4 +25,8 @@
   .d-flex.flex-lg-nowrap > a > div {
     display: block;
   }
+}
+
+.footer {
+  background-color: rgba(165, 143, 134, 0.1);
 }
