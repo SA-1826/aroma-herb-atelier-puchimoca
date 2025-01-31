@@ -1,2 +1,42 @@
-<h1>Programs#index</h1>
-<p>Find me in app/views/programs/index.html.erb</p>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <h5>新着講座</h5>
+    <%= render 'layouts/new_programs' %>
+  </div>
+  <div class="col-lg-9">
+    <h1>講座一覧</h1>
+    <ul class="list-group">
+      <% @programs.each do |program| %>
+        <%= link_to program_path(program) do %>
+          <li class="list-group-item list-group-item-action">
+            <div class="p-2 mb-1" style="background-color: rgba(165, 143, 134, 0.5);">
+              <strong><%= program.title %></strong>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-mb-4">
+                  <%= image_tag program.get_image, size: "200x160" %>
+                </div>
+                <div class="col-mb-8 p-3">
+                  <div>
+                    <span>開催日時:</span>
+                    <%= program.start_time.strftime('%Y/%m/%d') %>
+                  </div>
+                  <div>
+                    <span>所要時間: 約</span>
+                    <%= program.time_required %>
+                    <span>分</span>
+                  </div>
+                  <div>
+                    <span>カテゴリー:</span>
+                    <%= program.category.name %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

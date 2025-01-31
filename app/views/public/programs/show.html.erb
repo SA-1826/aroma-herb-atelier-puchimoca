@@ -1,2 +1,49 @@
-<h1>Programs#show</h1>
-<p>Find me in app/views/programs/show.html.erb</p>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <h5>新着講座</h5>
+    <%= render 'layouts/new_programs' %>
+  </div>
+  <div class="col-lg-9">
+    <h4 class="p-3 mb-2" style="background-color: rgba(165, 143, 134, 0.5);">
+      <%= @program.title %>
+    </h4>
+    <div class="container">
+      <div class="row mb-1">
+        <div class="col-lg-6 text-center">
+          <%= image_tag @program.get_image, size: "300x240" %>
+        </div>
+        <div class="col-lg-5">
+          <%= raw @program.body %>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-3 text-center py-1" style="background-color: rgba(165, 143, 134, 0.2);">
+          開催日
+        </div>
+        <div class="col-9 py-1">
+          <%= @program.start_time %>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-3 text-center py-1" style="background-color: rgba(165, 143, 134, 0.2);">
+          所要時間
+        </div>
+        <div class="col-9 py-1">
+          <%= @program.time_required %>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-3 text-center py-1" style="background-color: rgba(165, 143, 134, 0.2);">
+          参加費
+        </div>
+        <div class="col-9 py-1">
+          <%= @program.price %>
+        </div>
+      </div>
+    </div>
+    <div class="my-3 text-right">
+      <%= link_to 'お問い合わせ', new_inquiry_path, class: "btn btn-secondary" %>
+      <%= link_to '講座一覧へ戻る', programs_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
