@@ -8,7 +8,9 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    @total_posts_count = @user.posts.count
     @comments = @user.comments.page(params[:page])
+    @total_comments_count = @user.comments.count
   end
 
   def edit

@@ -32,7 +32,7 @@
   <div class="col-lg-4 mb-3">
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>投稿</strong>
-      （<%= @posts.count %>件）
+      （<%= @total_posts_count %> 件）
     </p>
     <% @posts.each do |post| %>
       <%= link_to admin_post_path(post) do %>
@@ -48,11 +48,14 @@
         </div>
       <% end %>
     <% end %>
+    <div class="mt-1">
+      <%= paginate @posts %>
+    </div>
   </div>
   <div class="col-lg-4 mb-3">
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>コメント</strong>
-      （<%= @comments.count %>件）
+      （<%= @total_comments_count %> 件）
     </p>
     <% @comments.each do |comment| %>
       <%= link_to admin_comment_path(comment) do %>
@@ -61,5 +64,12 @@
         </div>
       <% end %>
     <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-3 offset-9 mt-1">
+          <%= paginate @comments %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
