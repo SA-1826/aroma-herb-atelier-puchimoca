@@ -17,7 +17,7 @@
             <% end %>
           </td>
           <td>
-            <%= user.is_active %>
+            <%= user.is_active ? "有効" : "無効" %>
           </td>
           <td>
             <%= user.created_at.strftime('%Y/%m/%d') %>
