@@ -2,13 +2,13 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
-    @comments = @user.comments.all
+    @posts = @user.posts.page(params[:page])
+    @comments = @user.comments.page(params[:page])
   end
 
   def edit
@@ -24,9 +24,6 @@ class Admin::UsersController < ApplicationController
       flash.now[:danger] = "変更の保存に失敗しました"
       render :edit
     end
-  end
-
-  def withdraw
   end
 
   private
