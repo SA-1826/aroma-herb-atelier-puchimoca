@@ -1,10 +1,6 @@
 <div class="d-flex justify-content-center">
   <%= render 'public/searches/search_form' %>
 </div>
-<% if @user == current_user %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1>ユーザー情報</h1>
-<% end %>
 
-<%= render 'user_info', user: @user, posts: @posts %>
+<h1>ユーザー情報</h1>
+<%= render 'user_info', user: @user, posts: @posts, total_posts_count: @total_posts_count, comments: @comments, total_comments_count: @total_comments_count %>

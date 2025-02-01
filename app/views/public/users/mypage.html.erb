@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <%= render 'public/searches/search_form' %>
 </div>
-<h1>マイページ</h1>
 
-<%= render 'user_info', user: @user, posts: @posts %>
+<h1>マイページ</h1>
+<%= render 'user_info', user: @user, posts: @posts, total_posts_count: @total_posts_count, comments: @comments, total_comments_count: @total_comments_count %>
