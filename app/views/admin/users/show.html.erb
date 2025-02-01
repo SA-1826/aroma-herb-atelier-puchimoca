@@ -1,22 +1,62 @@
 <h1>ユーザー詳細</h1>
 
 <div class="row">
-  <div class="col-lg-4 mb-lg-3">
-    <%= @user.name %>
-    <%= @user.email %>
-    <%= @user.is_active %>
+  <div class="col-lg-4 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);"><strong>ユーザー情報</strong></p>
+    <p>
+      ユーザー名：
+      <%= @user.name %>
+    </p>
+    <p class="text-truncate">
+      メールアドレス：
+      <%= @user.email %>
+    </p>
+    <p>
+      ユーザーステータス：
+      <%= @user.is_active ? "有効" : "無効" %>
+    </p>
+    <p>
+      登録日：
+      <%= @user.created_at.strftime("%Y/%m/%d") %>
+    </p>
+    <p>
+      更新日：
+      <%= @user.updated_at.strftime("%Y/%m/%d") %>
+    </p>
+    <div class="text-right">
+      <%= link_to '編集', edit_admin_user_path(@user), class: "btn btn-secondary" %>
+    </div>
   </div>
-  <div class="col-lg-4 mb-lg-3">
+  <div class="col-lg-4 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>投稿</strong>
+      （<%= @posts.count %>件）
+    </p>
     <% @posts.each do |post| %>
       <%= link_to admin_post_path(post) do %>
-        <%= post.title %>
+        <div class="list-group-item list-group-item-action">
+          <p>
+            タイトル：
+            <%= post.title %>
+          </p>
+          <p class="text-truncate">
+            内容：
+            <%= post.body %>
+          </p>
+        </div>
       <% end %>
     <% end %>
   </div>
-  <div class="col-lg-4 mb-lg-3">
+  <div class="col-lg-4 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>コメント</strong>
+      （<%= @comments.count %>件）
+    </p>
     <% @comments.each do |comment| %>
       <%= link_to admin_comment_path(comment) do %>
-        <%= comment.body %>
+        <div class="list-group-item list-group-item-action text-truncate">
+          <%= comment.body %>
+        </div>
       <% end %>
     <% end %>
   </div>

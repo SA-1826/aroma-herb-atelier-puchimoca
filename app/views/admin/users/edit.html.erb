@@ -1,1 +1,32 @@
-<h1>Admin#users#Edit</h1>
+<h1>ユーザー編集</h1>
+
+
+<div class="row">
+  <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="d-flex justify-content-center">ユーザー情報の編集</h2>
+          <%= form_with model: @user do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+            <div class="form-group">
+              <label for="user_name">ユーザーネーム</label>
+              <%= f.text_field :name, class: "form-control user_name" %>
+            </div>
+            <div class="form-group">
+              <label for="user_email">メールアドレス</label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control user_email" %>
+            </div>
+            <div class="form-group">
+              <label for="status">ユーザーステータス</label>
+              <%= f.select :status, options_for_select([["有効", true], ["無効", false]], @user.is_active), class: "form-control status" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit '変更を保存する', class: "btn btn-secondary btn-block" %>
+            </div>
+          <% end %>
+          <%= link_to '戻る', admin_user_path(@user), class: "btn btn-secondary btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>
+
