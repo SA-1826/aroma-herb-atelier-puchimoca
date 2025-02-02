@@ -1,17 +1,30 @@
 <div class="d-flex justify-content-center">
   <%= render 'public/searches/search_form' %>
 </div>
-<h1>新規投稿</h1>
 
-<%= form_with model: @post do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-	
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-	
-  <%= f.submit '投稿' %>
-<% end %>
+<h1>コミュニティ</h1>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <%= render 'layouts/new_programs.html.erb' %>
+  </div>
+  <div class="col-lg-9">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>新規投稿</strong>
+    </p>
+    <%= form_with model: @post do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group">
+        <label for="title">タイトル</label>
+        <%= f.text_field :title, class: "form-control title" %>
+      </div>
+      <div class="form-group">
+        <label for="body">本文</label>
+        <%= f.text_area :body, class: "form-control body" %>
+      </div>
+      <div class="form-group text-right">
+        <%= f.submit '投稿', class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 

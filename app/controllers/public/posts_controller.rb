@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
   def create
@@ -17,11 +18,20 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
+    @total_posts_count = Post.all.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
   def edit
     @post = Post.find(params[:id])
+    @total_comments_count = @post.comments.all.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    if @post.comments.present?
+      @comments = @post.comments.page(params[:page])
+    else
+      @comments = Comment.none.page(params[:page])
+    end
   end
 
   def update
@@ -38,10 +48,12 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @total_comments_count = @post.comments.all.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
     if @post.comments.present?
-      @comments = @post.comments.all
+      @comments = @post.comments.page(params[:page])
     else
-      @comments = []
+      @comments = Comment.none.page(params[:page])
     end
   end
 

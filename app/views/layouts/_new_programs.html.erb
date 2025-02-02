@@ -1,3 +1,6 @@
+<p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+  <strong>新着講座</strong>
+</p>
 <% @new_programs.each do |program| %>
   <div class="d-flex flex-wrap flex-lg-nowrap mt-3">
     <%= link_to program_path(program), class: "d-block" do %>

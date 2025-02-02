@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
     @total_posts_count = @user.posts.count
     @comments = @user.comments.page(params[:page])
     @total_comments_count = @user.comments.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
   def edit
@@ -30,6 +31,7 @@ class Public::UsersController < ApplicationController
     @total_posts_count = @user.posts.count
     @comments = @user.comments.page(params[:page])
     @total_comments_count = @user.comments.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
     if @user == current_user
       redirect_to mypage_path
     else
