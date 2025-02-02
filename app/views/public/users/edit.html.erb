@@ -7,7 +7,7 @@
           <%= form_with model: @user do |f| %>
             <%= render 'layouts/error_messages', model: f.object %>
             <div class="form-group">
-              <label for="user_name">ユーザーネーム</label>
+              <label for="user_name">ユーザー名</label>
               <%= f.text_field :name, class: "form-control user_name" %>
             </div>
             <div class="form-group">
@@ -18,9 +18,12 @@
               <%= f.submit '変更を保存する', class: "btn btn-secondary btn-block" %>
             </div>
           <% end %>
-          <%= link_to '退会する', withdraw_user_path(@user), method: :patch, "data-confirm" => "本当に退会しますか？" %>
+          <%= link_to '退会する', withdraw_user_path(@user), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger btn-block" %>
       </div>
     </div>
+    <div class="text-center">
+        <%= link_to 'マイページへ戻る', mypage_path, class: "btn btn-secondary mt-3" %>
+      </div>
   </div>
 </div>
 

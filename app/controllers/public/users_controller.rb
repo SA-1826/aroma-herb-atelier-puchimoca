@@ -3,7 +3,11 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @posts = @user.posts.all
+    @posts = @user.posts.page(params[:page])
+    @total_posts_count = @user.posts.count
+    @comments = @user.comments.page(params[:page])
+    @total_comments_count = @user.comments.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
   def edit
@@ -23,7 +27,16 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.page(params[:page])
+    @total_posts_count = @user.posts.count
+    @comments = @user.comments.page(params[:page])
+    @total_comments_count = @user.comments.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    if @user == current_user
+      redirect_to mypage_path
+    else
+      render :show
+    end
   end
 
   def withdraw

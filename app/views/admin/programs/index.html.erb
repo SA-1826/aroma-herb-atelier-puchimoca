@@ -31,10 +31,10 @@
             <%= program.category.name %>
           </td>
           <td>
-            <%= program.start_time %>
+            <%= program.start_time.strftime("%Y/%m/%d %H:%M") %>
           </td>
           <td>
-            <%= program.created_at %>
+            <%= program.created_at.strftime("%Y/%m/%d") %>
           </td>
         </tr>
       <% end %>

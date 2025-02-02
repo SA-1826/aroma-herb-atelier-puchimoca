@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get '/mypage' => 'users#mypage', as: "mypage"
     patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"
     resources :posts do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :show, :destroy]
     end
     resources :inquiries, only: [:new, :create]
     get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
