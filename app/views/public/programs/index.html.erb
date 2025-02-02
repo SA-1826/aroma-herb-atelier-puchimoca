@@ -3,7 +3,9 @@
     <%= render 'layouts/new_programs' %>
   </div>
   <div class="col-lg-9">
-    <h1>講座一覧</h1>
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>講座一覧</strong>
+    </p>
     <ul class="list-group">
       <% @programs.each do |program| %>
         <%= link_to program_path(program) do %>

@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-lg-3 mb-3">
-    <h5>新着講座</h5>
     <%= render 'layouts/new_programs' %>
   </div>
   <div class="col-lg-9">
@@ -21,7 +20,7 @@
           開催日
         </div>
         <div class="col-9 py-1">
-          <%= @program.start_time %>
+          <%= @program.start_time.strftime("%Y/%m/%d") %>
         </div>
       </div>
       <div class="row mb-1">
@@ -29,7 +28,7 @@
           所要時間
         </div>
         <div class="col-9 py-1">
-          <%= @program.time_required %>
+          約 <%= @program.time_required %> 分
         </div>
       </div>
       <div class="row mb-1">
@@ -37,7 +36,7 @@
           参加費
         </div>
         <div class="col-9 py-1">
-          <%= @program.price %>
+          ￥ <%= @program.price %> （税込）
         </div>
       </div>
     </div>

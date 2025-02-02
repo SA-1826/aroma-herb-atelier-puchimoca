@@ -2,5 +2,5 @@
   <%= render 'public/searches/search_form' %>
 </div>
 
-<h1>ユーザー情報</h1>
+<h1>ユーザー詳細：<%= @user.name %></h1>
 <%= render 'user_info', user: @user, posts: @posts, total_posts_count: @total_posts_count, comments: @comments, total_comments_count: @total_comments_count %>
