@@ -45,6 +45,7 @@ class Admin::ProgramsController < ApplicationController
   def destroy
     program = Program.find(params[:id])
     program.destroy
+    flash[:notice] = "削除しました"
     redirect_to admin_programs_path
   end
 
