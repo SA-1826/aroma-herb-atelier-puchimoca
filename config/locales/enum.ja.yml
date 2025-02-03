@@ -5,3 +5,8 @@ ja:
         draft: "下書き"
         published: "公開"
         non_public: "非公開"
+    user_group_combination:
+      status:
+        is_pending: "申請中"
+        is_participating: "参加中"
+        is_reject: "拒否"

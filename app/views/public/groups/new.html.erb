@@ -1,2 +1,36 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>グループ作成</h1>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <%= render 'layouts/new_programs.html.erb' %>
+  </div>
+  <div class="user-posts col-lg-5 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>グループ新規作成</strong>
+    </p>
+    <%= render 'form', group: @group %>
+  </div>
+  <div class="user-info col-lg-4 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>ユーザー情報</strong>
+    </p>
+    <p>
+      ユーザー名：
+      <%= @user.name %>
+    </p>
+    <p>
+      登録日：
+      <%= @user.created_at.strftime("%Y/%m/%d") %>
+    </p>
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>所属グループ</strong>
+      （<%= @groups.count %> 件）
+    </p>
+    <p>
+      <% @groups.each do |group| %>
+        <%= link_to group_path(group) do %>
+          <%= group.name %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+</div>

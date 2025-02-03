@@ -1,0 +1,5 @@
+<% groups.each do |group| %>
+  <%= link_to group_path(group) do %>
+    <%= group.name %>
+  <% end %>
+<% end %>

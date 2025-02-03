@@ -29,7 +29,10 @@ Rails.application.routes.draw do
     end
     resources :inquiries, only: [:new, :create]
     get 'inquiries/thanks' => 'inquiries#thanks', as: "thanks"
-    resources :groups, except: :destroy
+    resources :groups, except: :destroy do
+      resource :user_group_combinations, only: [:create, :destroy]
+    end
+    resources :user_group_combinations, only: [:update]
     resources :programs, only: [:index, :show]
     get '/search' => 'searches#search', as: "search"
   end

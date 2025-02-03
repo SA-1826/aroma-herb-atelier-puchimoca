@@ -1,2 +1,68 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h1>グループ詳細</h1>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <%= render 'layouts/new_programs.html.erb' %>
+  </div>
+  <div class="user-posts col-lg-5 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>グループ詳細</strong>
+    </p>
+    <p>
+      グループ名：<%= @group.name %>
+    </p>
+    <p class="wrap-text">
+      - グループ説明 -<br>
+      <%= @group.body %>
+    </p>
+    <div>
+      <%= render 'public/user_group_combinations/group_button', group: @group if user_signed_in? && @group.owner != current_user %>
+    </div>
+    <p>
+      - 所属メンバー -<br>
+      <% if @group.owner == current_user %>
+        <% @user_group_combinations.each do |user_group_combination| %>
+          <div>
+            <%= form_with model: user_group_combination do |f| %>
+              <%= link_to user_group_combination.user.name, user_path(user_group_combination.user) %>
+              <%= f.select :status, UserGroupCombination.statuses.keys.map { |status| [I18n.t("enums.user_group_combination.status.#{status}"), status] } %>
+
+              <%= f.submit "update", class: "btn btn-outline-primary" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @users.each do |user| %>
+          <%= link_to user.name, user_path(user) %>
+          <br>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+  <div class="user-info col-lg-4 mb-3">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>ユーザー情報</strong>
+    </p>
+    <p>
+      ユーザー名：
+      <%= @user.name %>
+    </p>
+    <p>
+      登録日：
+      <%= @user.created_at.strftime("%Y/%m/%d") %>
+    </p>
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>所属グループ</strong>
+      （<%= @join_groups.count %> 件）
+    </p>
+    <p>
+      <%= render 'public/groups/groups', groups: @join_groups %>
+    </p>
+        <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>オーナーグループ</strong>
+      （<%= @owner_groups.count %> 件）
+    </p>
+    <p>
+      <%= render 'public/groups/groups', groups: @owner_groups %>
+    </p>
+  </div>
+</div>

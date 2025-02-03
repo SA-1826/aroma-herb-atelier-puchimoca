@@ -1,0 +1,8 @@
+<% status = current_user.user_group_combinations.find_by(group_id: group.id)&.status %>
+<% if current_user.join_group?(group) && status == "is_pending" %>
+  <%= link_to "pending", group_user_group_combinations_path(group), method: :delete, class: "btn btn-secondary" %>
+<% elsif current_user.join_group?(group) %>
+  <%= link_to "reject", group_user_group_combinations_path(group), method: :delete, class: "btn btn-danger" %>
+<% else  %>
+  <%= link_to "join", group_user_group_combinations_path(group), method: :post, class: "btn btn-primary" %>
+<% end %>
