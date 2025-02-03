@@ -5,11 +5,8 @@ class Public::GroupsController < ApplicationController
     @group = Group.new
     @user = current_user
     @new_programs = Program.published.order(created_at: :desc).limit(3)
-    if @user.groups.present?
-      @groups = @user.groups.all
-    else
-      @groups = []
-    end
+    @join_groups = @user.join_groups
+    @owner_groups = @user.owner_groups
   end
 
   def create
@@ -43,6 +40,7 @@ class Public::GroupsController < ApplicationController
     @users = @group.users_include_owner
     @user_group_combinations = @group.user_group_combinations
     @join_groups = @user.join_groups
+    #@join_groups = @user.user_group_combinations.is_participating.map(&:group)
     @owner_groups = @user.owner_groups
   end
 

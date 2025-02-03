@@ -7,6 +7,9 @@
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>グループ詳細</strong>
     </p>
+    <div>
+      <%= render 'public/user_group_combinations/group_button', group: @group if user_signed_in? && @group.owner != current_user %>
+    </div>
     <p>
       グループ名：<%= @group.name %>
     </p>
@@ -14,21 +17,25 @@
       - グループ説明 -<br>
       <%= @group.body %>
     </p>
-    <div>
-      <%= render 'public/user_group_combinations/group_button', group: @group if user_signed_in? && @group.owner != current_user %>
-    </div>
     <p>
       - 所属メンバー -<br>
       <% if @group.owner == current_user %>
         <% @user_group_combinations.each do |user_group_combination| %>
-          <div>
-            <%= form_with model: user_group_combination do |f| %>
-              <%= link_to user_group_combination.user.name, user_path(user_group_combination.user) %>
-              <%= f.select :status, UserGroupCombination.statuses.keys.map { |status| [I18n.t("enums.user_group_combination.status.#{status}"), status] } %>
-
-              <%= f.submit "update", class: "btn btn-outline-primary" %>
-            <% end %>
-          </div>
+          <%= form_with model: user_group_combination do |f| %>
+            <div class="container py-2 border-top">
+              <div class="row d-flex align-items-center">
+                <div class="col-6">
+                  <%= link_to user_group_combination.user.name, user_path(user_group_combination.user) %>
+                </div>
+                <div class="col-3">
+                  <%= f.select :status, UserGroupCombination.statuses.keys.map { |status| [I18n.t("enums.user_group_combination.status.#{status}"), status] } %>
+                </div>
+                <div class="col-3">
+                  <%= f.submit "update", class: "btn btn-outline-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% else %>
         <% @users.each do |user| %>

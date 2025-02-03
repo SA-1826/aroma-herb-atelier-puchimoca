@@ -9,4 +9,4 @@ ja:
       status:
         is_pending: "申請中"
         is_participating: "参加中"
-        is_reject: "拒否"
+        is_rejected: "拒否"

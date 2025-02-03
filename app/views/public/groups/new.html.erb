@@ -23,14 +23,17 @@
     </p>
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>所属グループ</strong>
-      （<%= @groups.count %> 件）
+      （<%= @join_groups.count %> 件）
     </p>
     <p>
-      <% @groups.each do |group| %>
-        <%= link_to group_path(group) do %>
-          <%= group.name %>
-        <% end %>
-      <% end %>
+      <%= render 'public/groups/groups', groups: @join_groups %>
+    </p>
+        <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>オーナーグループ</strong>
+      （<%= @owner_groups.count %> 件）
+    </p>
+    <p>
+      <%= render 'public/groups/groups', groups: @owner_groups %>
     </p>
   </div>
 </div>

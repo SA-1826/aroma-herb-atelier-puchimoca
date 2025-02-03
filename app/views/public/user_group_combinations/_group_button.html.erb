@@ -1,8 +1,17 @@
-<% status = current_user.user_group_combinations.find_by(group_id: group.id)&.status %>
-<% if current_user.join_group?(group) && status == "is_pending" %>
-  <%= link_to "pending", group_user_group_combinations_path(group), method: :delete, class: "btn btn-secondary" %>
-<% elsif current_user.join_group?(group) %>
-  <%= link_to "reject", group_user_group_combinations_path(group), method: :delete, class: "btn btn-danger" %>
-<% else  %>
-  <%= link_to "join", group_user_group_combinations_path(group), method: :post, class: "btn btn-primary" %>
-<% end %>
+<div class="mb-1">
+  <% status = current_user.user_group_combinations.find_by(group_id: group.id)&.status %>
+  <% if current_user.join_group?(group) && status == "is_pending" %>
+    <%= link_to "参加申請を取り消す", group_user_group_combinations_path(group), method: :delete, class: "btn btn-outline-secondary" %>
+  <% elsif current_user.join_group?(group) && status == "is_participating" %>
+    <%= link_to "グループから脱退する", group_user_group_combinations_path(group), method: :delete, class: "btn btn-outline-danger" %>
+  <% else  %>
+    <%= link_to "参加申請", group_user_group_combinations_path(group), method: :post, class: "btn btn-secondary" %>
+  <% end %>
+</div>
+
+
+<!-- オーナー側でステータスを拒否にされてしまい申請し直す場合
+  <%  current_user.join_group?(group) && status == "is_rejected" %>
+    <%= link_to "参加申請", user_group_combination_path(group), method: :post, class: "btn btn-secondary" %>
+updateもグループに紐づいた方がよいか、紐づけず別途定義するのがよいか？
+-->
