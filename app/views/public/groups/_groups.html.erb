@@ -1,5 +1,6 @@
 <% groups.each do |group| %>
   <%= link_to group_path(group) do %>
+    <%= image_tag group.get_image, size: "40x40", class: "rounded-circle" %>
     <%= group.name %>
   <% end %>
   <br>
