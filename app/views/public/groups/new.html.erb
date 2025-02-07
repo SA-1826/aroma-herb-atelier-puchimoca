@@ -8,7 +8,8 @@
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>グループ新規作成</strong>
     </p>
-    <%= render 'form', group: @group %>
+    <% submit_label = "新規作成" %>
+    <%= render 'form', group: @group, submit_label: submit_label %>
   </div>
   <div class="col-lg-4 mb-3">
     <%= render 'public/groups/user_groups_info', user: @user, join_groups: @join_groups, owner_groups: @owner_groups %>

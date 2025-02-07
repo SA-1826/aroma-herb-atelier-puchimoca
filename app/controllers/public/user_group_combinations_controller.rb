@@ -8,10 +8,10 @@ class Public::UserGroupCombinationsController < ApplicationController
   def update
     @user_group_combination = UserGroupCombination.find(params[:id])
     if @user_group_combination.update(user_group_combination_params)
-      flash[:notice] = "success"
+      flash[:notice] = "ステータスを更新しました"
       redirect_back(fallback_location: root_url)
     else
-      flash[:alert] = "failed"
+      flash[:alert] = "ステータスの更新に失敗しました"
       redirect_back(fallback_location: root_url)
     end
   end

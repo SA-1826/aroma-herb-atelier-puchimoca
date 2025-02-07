@@ -15,7 +15,7 @@ class Public::GroupsController < ApplicationController
     if @group.save
       @group.image.attach(params[:group][:image])
       flash[:notice] = "グループを作成しました"
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       flash.now[:danger] = "グループの作成に失敗しました"
       @user = current_user
@@ -50,9 +50,26 @@ class Public::GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
+    @user = current_user
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @join_groups = @user.join_groups
+    @owner_groups = @user.owner_groups
   end
 
   def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      flash[:notice] = "更新しました"
+      redirect_to group_path(@group)
+    else
+      flash.now[:danger] = "更新に失敗しました"
+      @user = current_user
+      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      @join_groups = @user.join_groups
+      @owner_groups = @user.owner_groups
+      render :edit
+    end
   end
 
   private

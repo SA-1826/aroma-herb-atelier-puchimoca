@@ -37,7 +37,7 @@
                   <%= f.select :status, UserGroupCombination.statuses.keys.map { |status| [I18n.t("enums.user_group_combination.status.#{status}"), status] } %>
                 </div>
                 <div class="col-3">
-                  <%= f.submit "update", class: "btn btn-outline-primary" %>
+                  <%= f.submit "更新", class: "btn btn-outline-secondary" %>
                 </div>
               </div>
             </div>
