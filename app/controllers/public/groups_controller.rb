@@ -59,7 +59,7 @@ class Public::GroupsController < ApplicationController
 
   def is_matching_login_user
     @group = Group.find(params[:id])
-    unless @group.user.id == current_user.id
+    unless @group.owner == current_user
       redirect_to groups_path
     end
   end

@@ -1,4 +1,5 @@
 <h1>グループ詳細</h1>
+<%= render 'public/groups/groups_link' %>
 <div class="row">
   <div class="col-lg-3 mb-3">
     <%= render 'layouts/new_programs.html.erb' %>
@@ -14,6 +15,9 @@
       グループ名：
       <%= image_tag @group.get_image, size: "40x40", class: "rounded-circle" %>
       <%= @group.name %>
+      <% if @group.owner == current_user %>
+        <%= link_to '編集', edit_group_path(@group), class: "btn btn-secondary ml-3" %>
+      <% end %>
     </p>
     <p class="wrap-text">
       ◆ グループ説明 ◆<br>
