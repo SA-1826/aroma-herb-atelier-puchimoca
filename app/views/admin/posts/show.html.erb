@@ -1,1 +1,44 @@
-<h1>Admin::Posts#show</h1>
+<h1>投稿詳細</h1>
+<div class="text-right mb-3">
+  <%= link_to '削除', admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark" %>
+  <%= link_to '戻る', admin_posts_path, class: "btn btn-secondary" %>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>投稿詳細</strong>
+    </p>
+    <p>
+      タイトル：
+      <%= @post.title %>
+    </p>
+    <p>
+      投稿者：
+      <%= link_to @post.user.name, admin_user_path(@post.user) %>
+    </p>
+    <p class="wrap-text">
+      ◆ 投稿内容 ◆<br>
+      <%= @post.body %>
+    </p>
+    <p>
+      投稿日：
+      <%= @post.created_at.strftime('%Y/%m/%d') %>
+    </p>
+    <p>
+      投稿更新日：
+      <%= @post.updated_at.strftime('%Y/%m/%d') %>
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>コメント</strong>
+      （<%= @total_comments_count %> 件）
+    </p>
+    <% @comments.each do |comment| %>
+      <p>
+        <%= comment.body %>
+      </p>
+    <% end %>
+    </div>
+  </div>
+</div>
