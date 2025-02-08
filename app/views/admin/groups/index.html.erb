@@ -1,2 +1,51 @@
-<h1>Admin::Groups#index</h1>
-<p>Find me in app/views/admin/groups/index.html.erb</p>
+<h1>グループ一覧</h1>
+<div class="row">
+    <div class="col-3 offset-9 mb-1">
+      ｜全 <%= @total_groups_count %> 件｜
+      <%= paginate @groups %>
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr style="background-color: rgba(165, 143, 134, 0.2);">
+        <th>グループ名</th>
+        <th>作成者</th>
+        <th>所属人数</th>
+        <th>グループ説明</th>
+        <th>グループ作成日</th>
+        <th col="1"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td>
+            <%= link_to admin_group_path(group) do %>
+              <%= image_tag group.get_image, size: "40x40", class: "rounded-circle pr-1" %>
+              <%= group.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= group.owner.name %>
+          </td>
+          <td>
+            <%= group.users.count %> 名
+          </td>
+          <td class="text-truncate" style="max-width: 150px">
+            <%= group.body %>
+          </td>
+          <td>
+            <%= group.created_at.strftime('%Y/%m/%d') %>
+          </td>
+          <td>
+            <%= link_to '削除', admin_group_path(group), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark py-1" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-3 offset-9 mt-1">
+      <%= paginate @groups %>
+    </div>
+  </div>
