@@ -1,0 +1,45 @@
+<%= form_with model: group, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="form-group">
+    <%= f.label :グループ名 %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :紹介文 %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :グループ画像 %>
+    <%= f.file_field :image, accept: 'image/*', class: "form-control-file", id: 'group-image-upload' %>
+  </div>
+  <div id="group-image-preview" class="mt-1">
+    <%= image_tag group.get_image, size: "100x100", class: "rounded-circle" %>
+  </div>
+
+  <div class="form-group text-right">
+    <%= render 'submit_button', f: f, submit_label: submit_label %>
+  </div>
+<% end %>
+
+<script>
+document.getElementById('group-image-upload').onchange = function(e) {
+  var file = e.target.files[0];
+  var reader = new FileReader();
+
+  reader.onload = function(event) {
+    var img = document.createElement('img');
+    img.src = event.target.result;
+    const preview = document.getElementById('group-image-preview');
+    preview.innerHTML = "";
+    preview.appendChild(img);
+    const image = document.querySelector("#group-image-preview img");
+    image.setAttribute('width', '100');
+    image.setAttribute('height', '100');
+    image.setAttribute('class', 'rounded-circle');
+  };
+
+  reader.readAsDataURL(file);
+};
+</script>

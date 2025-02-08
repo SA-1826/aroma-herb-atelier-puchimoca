@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :user_group_combinations, dependent: :destroy
+  has_many :join_groups, through: :user_group_combinations, source: :group
+  has_many :owner_groups, class_name: "Group", foreign_key: :owner_id
 
   validates :name, length: { minimum: 2, maximum: 20}, uniqueness: true, presence: true
   validates :email, presence: true
@@ -20,5 +23,17 @@ class User < ApplicationRecord
     else
       User.where('name Like ?', '%' + content + '%')
     end
+  end
+
+  def join_group(group)
+    self.user_group_combinations.find_or_create_by(group: group)
+  end
+
+  def reject_group(group)
+    self.user_group_combinations.find_by(group: group)&.destroy
+  end
+
+  def join_group?(group)
+    self.join_groups.include?(group)
   end
 end

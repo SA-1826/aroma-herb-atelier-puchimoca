@@ -1,2 +1,45 @@
-<h1>Admin::Groups#show</h1>
-<p>Find me in app/views/admin/groups/show.html.erb</p>
+<h1>グループ詳細</h1>
+<div class="text-right mb-3">
+  <%= link_to '削除', admin_group_path(@group), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark" %>
+  <%= link_to '戻る', admin_groups_path, class: "btn btn-secondary" %>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>グループ詳細</strong>
+    </p>
+    <p>
+      グループ名：
+      <%= image_tag @group.get_image, size: "40x40", class: "rounded-circle mr-1" %>
+      <%= @group.name %>
+    </p>
+    <p>
+      グループオーナー：
+      <%= @group.owner.name %>
+    </p>
+    <p class="wrap-text">
+      ◆ グループ説明 ◆<br>
+      <%= @group.body %>
+    </p>
+    <p>
+      グループ作成日：
+      <%= @group.created_at.strftime('%Y/%m/%d') %>
+    </p>
+    <p>
+      グループ更新日：
+      <%= @group.updated_at.strftime('%Y/%m/%d') %>
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>グループ所属メンバー</strong>
+      （<%= @users.count %> 名）
+    </p>
+    <% @users.each do |user| %>
+      <p>
+        <%= user.name %>
+      </p>
+    <% end %>
+    </div>
+  </div>
+</div>
