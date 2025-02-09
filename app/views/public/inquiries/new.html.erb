@@ -1,2 +1,29 @@
-<h1>Inquiries#new</h1>
-<p>Find me in app/views/inquiries/new.html.erb</p>
+<h1>お問い合わせ</h1>
+<div class="row">
+  <div class="col-lg-3 mb-3">
+    <%= render 'layouts/new_programs.html.erb' %>
+  </div>
+  <div class="col-lg-9">
+    <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>お問い合わせ入力</strong>
+    </p>
+    <%= form_with model: @inquiry do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div>
+        <%= f.label :email, "メールアドレス" %><br>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div>
+        <%= f.label :title, "件名" %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div>
+        <%= f.label :body, "お問い合わせ内容" %><br>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <div class="text-right">
+        <%= f.submit '送信', class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
