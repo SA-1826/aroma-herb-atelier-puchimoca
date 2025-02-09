@@ -35,10 +35,20 @@
       （<%= @total_comments_count %> 件）
     </p>
     <% @comments.each do |comment| %>
-      <p>
-        <%= comment.body %>
-      </p>
+      <div class="list-group-item list-group-item-action text-truncate">
+        <%= link_to admin_user_path(comment.user) do %>
+          <p style="font-size: 12px;">＠ <%= comment.user.name %></p>
+        <% end %>
+        <p class="text-truncate">
+          <%= link_to admin_comment_path(comment) do %>
+            <%= comment.body %>
+          <% end %>
+        </p>
+        <%= link_to "削除", admin_comment_path(comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-dark ml-3 py-1" %>
+      </div>
     <% end %>
+    <div class="mt-1">
+      <%= paginate @comments %>
     </div>
   </div>
 </div>

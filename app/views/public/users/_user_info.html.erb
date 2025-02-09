@@ -24,7 +24,7 @@
       <% end %>
     <% end %>
     <div class="mt-1">
-      <%= paginate posts %>
+      <%= paginate posts, param_name: 'posts_page' %>
     </div>
   </div>
   <div class="user-info col-lg-4 mb-3">
@@ -61,7 +61,7 @@
       </div>
     <% end %>
     <div class="mt-1">
-      <%= paginate comments %>
+      <%= paginate comments, param_name: 'comments_page' %>
     </div>
   </div>
 </div>

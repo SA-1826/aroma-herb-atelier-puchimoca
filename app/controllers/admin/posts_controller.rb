@@ -11,4 +11,11 @@ class Admin::PostsController < ApplicationController
     @comments = @post.comments.page(params[:page])
     @total_comments_count = @post.comments.count
   end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:notice] = "削除しました"
+    redirect_to admin_posts_path
+  end
 end

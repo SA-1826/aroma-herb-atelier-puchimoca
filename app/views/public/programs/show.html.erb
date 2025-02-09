@@ -9,10 +9,10 @@
     <div class="container">
       <div class="row mb-1">
         <div class="col-lg-6 text-center">
-          <%= image_tag @program.get_image, size: "300x240" %>
+          <%= image_tag @program.get_image, class: "w-100" %>
         </div>
         <div class="col-lg-5">
-          <%= raw @program.body %>
+          <%= simple_format @program.body %>
         </div>
       </div>
       <div class="row mb-1">
