@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :participating_user_group_combinations, -> { where( status: 'is_participating' ) }, class_name: 'UserGroupCombination'
   has_many :participating_join_groups, through: :participating_user_group_combinations, source: :group
   has_many :owner_groups, class_name: "Group", foreign_key: :owner_id
+  has_many :inquiries
 
   validates :name, length: { minimum: 2, maximum: 20}, uniqueness: true, presence: true
   validates :email, presence: true
