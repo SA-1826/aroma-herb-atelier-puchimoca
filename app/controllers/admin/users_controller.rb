@@ -2,7 +2,8 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
 
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:users_page])
+    @total_users_count = User.all.count
   end
 
   def show

@@ -18,7 +18,7 @@
     </p>
     <p class="wrap-text">
       ◆ 投稿内容 ◆<br>
-      <%= @post.body %>
+      <%= simple_format @post.body %>
     </p>
     <p>
       投稿日：
@@ -48,7 +48,7 @@
       </div>
     <% end %>
     <div class="mt-1">
-      <%= paginate @comments %>
+      <%= paginate @comments, param_name: 'comments_page' %>
     </div>
   </div>
 </div>

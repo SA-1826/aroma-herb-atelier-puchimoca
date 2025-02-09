@@ -1,6 +1,6 @@
 <table class="table">
   <thead>
-    <tr>
+    <tr style="background-color: rgba(165, 143, 134, 0.2);">
       <th>タイトル</th>
       <th>投稿ユーザー</th>
       <th>コメント件数</th>
@@ -18,3 +18,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="d-flex justify-content-end mt-1">
+  <%= paginate posts, param_name: 'posts_page' %>
+</div>

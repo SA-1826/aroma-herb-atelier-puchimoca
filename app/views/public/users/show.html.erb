@@ -3,4 +3,5 @@
 </div>
 
 <h1>ユーザー詳細：<%= @user.name %></h1>
+<%= render 'public/groups/groups_link' %>
 <%= render 'user_info', user: @user, posts: @posts, total_posts_count: @total_posts_count, comments: @comments, total_comments_count: @total_comments_count %>

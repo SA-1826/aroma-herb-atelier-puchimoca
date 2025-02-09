@@ -2,7 +2,7 @@ class Admin::GroupsController < ApplicationController
   layout 'admin'
   
   def index
-    @groups = Group.page(params[:page])
+    @groups = Group.page(params[:groups_page])
     @total_groups_count = Group.all.count
   end
 

@@ -1,6 +1,6 @@
 <table class="table">
   <thead>
-    <tr>
+    <tr style="background-color: rgba(165, 143, 134, 0.2);">
       <th>投稿者</th>
       <th>投稿件数</th>
       <th colspan="3"></th>
@@ -16,3 +16,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="d-flex justify-content-end mt-1">
+  <%= paginate users, param_name: 'users_page' %>
+</div>

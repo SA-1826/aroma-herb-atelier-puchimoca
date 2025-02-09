@@ -1,6 +1,6 @@
 class Public::ProgramsController < ApplicationController
   def index
-    @programs = Program.published.all
+    @programs = Program.published.page(params[:programs_page])
     @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
