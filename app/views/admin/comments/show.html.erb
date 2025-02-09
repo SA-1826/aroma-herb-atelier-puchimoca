@@ -14,7 +14,7 @@
     </p>
     <p class="wrap-text">
       ◆ コメント内容 ◆<br>
-      <%= @comment.body %>
+      <%= simple_format @comment.body %>
     </p>
     <p>
       コメント日：
@@ -39,7 +39,7 @@
     </p>
     <p class="wrap-text">
       ◆ 投稿内容 ◆<br>
-      <%= @post.body %>
+      <%= simple_format @post.body %>
     </p>
     <p>
       投稿日：

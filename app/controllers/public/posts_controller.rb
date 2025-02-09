@@ -41,6 +41,13 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash.now[:danger] = "更新に失敗しました"
+      @total_comments_count = @post.comments.all.count
+      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      if @post.comments.present?
+        @comments = @post.comments.page(params[:comments_page]).per(6)
+      else
+        @comments = Comment.none.page(params[:comments_page]).per(6)
+      end
       render :edit
     end
   end
