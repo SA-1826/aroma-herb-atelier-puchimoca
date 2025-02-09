@@ -34,7 +34,7 @@ class Public::GroupsController < ApplicationController
     @groups = Group.page(params[:page])
     @total_groups = Group.all
     @user = current_user
-    @join_groups = @user.join_groups
+    @join_groups = @user.participating_join_groups
     @owner_groups = @user.owner_groups
   end
 
@@ -44,7 +44,7 @@ class Public::GroupsController < ApplicationController
     @new_programs = Program.published.order(created_at: :desc).limit(3)
     @users = @group.users_include_owner
     @user_group_combinations = @group.user_group_combinations
-    @join_groups = @user.join_groups
+    @join_groups = @user.participating_join_groups
     #@join_groups = @user.user_group_combinations.is_participating.map(&:group)
     @owner_groups = @user.owner_groups
   end

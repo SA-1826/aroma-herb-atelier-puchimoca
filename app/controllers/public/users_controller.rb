@@ -3,9 +3,9 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:posts_page])
     @total_posts_count = @user.posts.count
-    @comments = @user.comments.page(params[:page])
+    @comments = @user.comments.page(params[:comments_page]).per(1)
     @total_comments_count = @user.comments.count
     @new_programs = Program.published.order(created_at: :desc).limit(3)
   end

@@ -8,10 +8,3 @@
     <%= link_to "参加申請", group_user_group_combinations_path(group), method: :post, class: "btn btn-secondary" %>
   <% end %>
 </div>
-
-
-<!-- オーナー側でステータスを拒否にされてしまい申請し直す場合
-  <%  current_user.join_group?(group) && status == "is_rejected" %>
-    <%= link_to "参加申請", user_group_combination_path(group), method: :post, class: "btn btn-secondary" %>
-updateもグループに紐づいた方がよいか、紐づけず別途定義するのがよいか？
--->
