@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-3 offset-9 mb-1">
       ｜全 <%= @total_posts_count %> 件｜
-      <%= paginate @posts %>
+      <%= paginate @posts, param_name: 'posts_page' %>
     </div>
   </div>
   <table class="table table-hover">
@@ -43,7 +43,7 @@
   </table>
   <div class="row">
     <div class="col-3 offset-9 mt-1">
-      <%= paginate @posts %>
+      <%= paginate @posts, param_name: 'posts_page' %>
     </div>
   </div>
 

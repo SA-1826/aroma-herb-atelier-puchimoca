@@ -48,7 +48,7 @@
           <p style="font-size: 12px;">＠ <%= comment.user.name %></p>
         <% end %>
         <p class="text-truncate">
-          <%= link_to post_comment_path(comment.post_id, comment) do %>
+          <%= link_to post_comment_path(@post, comment) do %>
             <%= comment.body %>
           <% end %>
         </p>
@@ -57,8 +57,8 @@
         <% end %>
       </div>
     <% end %>
-    <div class="mt-1">
-      <%= paginate @comments %>
+    <div class="d-flex justify-content-end mt-1">
+      <%= paginate @comments, param_name: 'comments_page' %>
     </div>
   </div>
 </div>

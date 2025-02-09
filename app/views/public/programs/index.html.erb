@@ -39,5 +39,8 @@
         <% end %>
       <% end %>
     </ul>
+    <div class="d-flex justify-content-end mt-1">
+      <%= paginate @programs, param_name: 'programs_page' %>
+    </div>
   </div>
 </div>

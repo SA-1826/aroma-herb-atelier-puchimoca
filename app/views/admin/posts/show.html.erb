@@ -48,7 +48,7 @@
       </div>
     <% end %>
     <div class="mt-1">
-      <%= paginate @comments %>
+      <%= paginate @comments, param_name: 'comments_page' %>
     </div>
   </div>
 </div>

@@ -31,7 +31,7 @@ class Public::GroupsController < ApplicationController
 
   def index
     @new_programs = Program.published.order(created_at: :desc).limit(3)
-    @groups = Group.page(params[:page])
+    @groups = Group.page(params[:groups_page])
     @total_groups = Group.all
     @user = current_user
     @join_groups = @user.participating_join_groups

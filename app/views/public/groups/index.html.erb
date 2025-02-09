@@ -24,8 +24,8 @@
         </div>
       <% end %>
     <% end %>
-    <div class="mt-1">
-      <% paginate @groups %>
+    <div class="d-flex justify-content-end mt-1">
+      <%= paginate @groups, param_name: 'groups_page' %>
     </div>
   </div>
   <div class="col-lg-4 mb-3">

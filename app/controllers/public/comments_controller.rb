@@ -15,6 +15,9 @@ class Public::CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @total_comments_count = @post.comments.count
+    @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
 
   def destroy
