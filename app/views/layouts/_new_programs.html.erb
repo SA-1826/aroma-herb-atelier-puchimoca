@@ -2,7 +2,7 @@
   <strong>新着講座</strong>
 </p>
 <% @new_programs.each do |program| %>
-  <div class="d-flex flex-wrap flex-lg-nowrap mt-3 mx-auto">
+  <div class="d-flex flex-wrap flex-lg-nowrap justify-content-center mt-3 mx-auto">
     <%= link_to program_path(program), class: "d-block" do %>
       <div>
         <%= image_tag program.get_image_resize(210, 168), class: "w-100" %>
