@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @posts = @user.posts.page(params[:posts_page])
+    @posts = @user.posts.page(params[:posts_page]).per(6)
     @total_posts_count = @user.posts.count
     @comments = @user.comments.page(params[:comments_page]).per(6)
     @total_comments_count = @user.comments.count
@@ -27,7 +27,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:posts_page])
+    @posts = @user.posts.page(params[:posts_page]).per(6)
     @total_posts_count = @user.posts.count
     @comments = @user.comments.page(params[:comments_page]).per(6)
     @total_comments_count = @user.comments.count

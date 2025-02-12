@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
 
   create_table "inquiries", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "email"
     t.string "title", null: false
     t.text "body", null: false
     t.integer "status", default: 0, null: false
