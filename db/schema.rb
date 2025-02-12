@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "email"
     t.string "title", null: false
     t.text "body", null: false
@@ -86,7 +85,6 @@ ActiveRecord::Schema.define(version: 2024_12_06_151608) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["status"], name: "index_inquiries_on_status"
-    t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

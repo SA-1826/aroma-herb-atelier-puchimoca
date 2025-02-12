@@ -1,2 +1,39 @@
 <h1>問い合わせ一覧</h1>
-
+  <div class="d-flex justify-content-end mb-1">
+    ｜全 <%= @total_inquiries_count %> 件｜
+    <%= paginate @inquiries, param_name: 'inquiries_page' %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr style="background-color: rgba(165, 143, 134, 0.2);">
+        <th>ステータス</th>
+        <th>問い合わせ者</th>
+        <th>件名</th>
+        <th>問い合わせ日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inquiries.each do |inquiry| %>
+        <tr>
+          <td>
+            <%= form_with model: [:admin, inquiry] do |f| %>
+              <%= f.select :status, Inquiry.statuses.keys.map { |status| [I18n.t("enums.inquiry.status.#{status}"), status] } %>
+              <%= f.submit 'ステータスの変更を保存', class: "btn btn-outline-secondary py-1 my-1 ml-1" %>
+            <% end %>
+          </td>
+          <td>
+            <%= inquiry.email %>
+          </td>
+          <td>
+            <%= link_to inquiry.title, admin_inquiry_path(inquiry) %>
+          </td>
+          <td>
+            <%= inquiry.created_at.strftime('%Y/%m/%d') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end mt-1">
+    <%= paginate @inquiries, param_name: 'inquiries_page' %>
+  </div>

@@ -6,6 +6,7 @@ class Public::InquiriesController < ApplicationController
 
   def create
     @inquiry = current_user.inquiries.build(inquiry_params)
+    @inquiry.status = 0
     if @inquiry.save
       flash[:notice] = "送信しました"
       redirect_to thanks_path
@@ -22,6 +23,6 @@ class Public::InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:title, :body, :email)
+    params.require(:inquiry).permit(:title, :body, :email, :status)
   end
 end

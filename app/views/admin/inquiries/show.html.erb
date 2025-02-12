@@ -1,2 +1,21 @@
-<h1>Admin::Inquiries#show</h1>
-<p>Find me in app/views/admin/inquiries/show.html.erb</p>
+<h1>問い合わせ詳細</h1>
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+    <div class="text-right mb-3">
+      <%= link_to '問い合わせ一覧へ戻る', admin_inquiries_path, class: "btn btn-secondary" %>
+    </div>
+    <p class="pl-1 py-2" style="background-color: rgba(165, 143, 134, 0.2);">
+      <strong>件名：<%= @inquiry.title %></strong>
+    </p>
+    <div>
+      <%= form_with model: [:admin, @inquiry] do |f| %>
+        <%= f.select :status, Inquiry.statuses.keys.map { |status| [I18n.t("enums.inquiry.status.#{status}"), status] } %>
+        <%= f.submit 'ステータスの変更を保存', class: "btn btn-secondary py-1 ml-3" %>
+      <% end %>
+    </div>
+    <p class="text-left wrap-text mt-3">
+      ＜内容＞
+      <%= simple_format @inquiry.body %>
+    </p>
+  </div>
+</div>

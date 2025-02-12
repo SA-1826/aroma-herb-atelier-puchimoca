@@ -224,6 +224,15 @@ programs_attributes = [
     publish_status: :draft,
     price: 0,
     time_required: 0
+  },
+  {
+    category: Category.find_by(name: "ワークショップーハーブ"),
+    title: "ハーバリウム作り",
+    body: "インテリアにおすすめのハーバリウムを、ご自分で選ぶお花で作ります。\n容器の大きさや形も選べるので、置く場所をイメージして、すてきなオリジナル作品を完成させましょう！\n\n※参加費に提示の金額は最低額です。選ぶお花や容器によって追加料金を頂戴いたします。",
+    start_time: Time.zone.local(2025, 3, 2, 15, 00, 0),
+    publish_status: :published,
+    price: 1500,
+    time_required: 60
   }
 ]
 
@@ -235,5 +244,49 @@ programs_attributes.each.with_index(1) do |program_attributes, i|
 end
 
 puts "#=> Program finished"
+
+inquiries_attributes = [
+  {
+    title: "アドバイザーの資格について",
+    body: "アドバイザー認定講習会を受講したらすぐに取得できるのでしょうか？"
+  },
+  {
+    title: "ハーブパン作り",
+    body: "こちらのワークショップでは、どのようなハーブを使うのでしょうか。"
+  },
+  {
+    title: "ハーバルセラピスト認定講座の日時について",
+    body: "受講を考えています。\nハーバルセラピストの認定講座は2時間で1単位とのことですが、仕事の都合で日程を細かく調整いただくことは可能ですか。\nまた、1日に複数単位受講することは可能ですか。"
+  },
+  {
+    title: "ハーバリウム作りについて",
+    body: "持ち帰り用の手提げはついていますか？\n自分で用意するならどのようなものが良いでしょうか？"
+  },
+  {
+    title: "ワークショップの内容",
+    body: "化粧水や美容液を自分で作ってみたいのですが、初めてなので一人で正しく作れるか不安です。\nそういった内容のワークショップの開催予定はありますか。"
+  },
+  {
+    title: "アロマのワークショップについて",
+    body: "ピロースプレーやサシェはどのような香りを選べますか？"
+  },
+  {
+    title: "ブレンドハーブティーについて",
+    body: "花粉症に良いブレンドを作りたいのですが、ハーブティーの味は苦手なものが多いです。\nそれでも美味しく飲めるように作れますか？"
+  },
+  {
+    title: "アロマの資格について",
+    body: "調香を資格として持ちたいと考えているのですが、アロマブレンドデザイナーの資格取得の講座は開催しないのでしょうか？"
+  },
+]
+
+puts "#=> Inquiry start"
+
+inquiries_attributes.each do |inquiry_attributes|
+  email = users.sample.email
+  Inquiry.create!(inquiry_attributes.merge({ email: email }))
+end
+
+puts "#=> Inquiry finished"
 
 puts "seedの実行を完了しました"
