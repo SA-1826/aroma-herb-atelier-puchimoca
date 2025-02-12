@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def action_is_public?
-    (controller_name == 'homes' && action_name.in?(['home', 'about'])) || (controller_name == 'programs' && action_name.in?(['index', 'show']))
+    (controller_name == 'homes' && action_name.in?(['home', 'about'])) || (controller_name == 'programs' && action_name.in?(['index', 'show'])) || (controller_name == 'inquiries' && action_name.in?(['new', 'create', 'thanks']))
   end
 end

@@ -10,3 +10,8 @@ ja:
         is_pending: "申請中"
         is_participating: "参加中"
         is_rejected: "拒否"
+    inquiry:
+      status:
+        still: "未対応"
+        in_progress: "対応中"
+        is_done: "対応済"

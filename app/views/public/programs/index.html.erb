@@ -42,5 +42,8 @@
     <div class="d-flex justify-content-end mt-1">
       <%= paginate @programs, param_name: 'programs_page' %>
     </div>
+    <div class="my-3 text-right">
+      <%= link_to 'お問い合わせ', new_inquiry_path, class: "btn btn-secondary" %>
+    </div>
   </div>
 </div>
