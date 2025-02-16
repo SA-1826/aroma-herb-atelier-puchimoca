@@ -5,7 +5,7 @@ class Public::InquiriesController < ApplicationController
   end
 
   def create
-    @inquiry = current_user.inquiries.build(inquiry_params)
+    @inquiry = Inquiry.new(inquiry_params)
     @inquiry.status = 0
     if @inquiry.save
       flash[:notice] = "送信しました"

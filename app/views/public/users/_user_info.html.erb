@@ -42,9 +42,11 @@
         <i class="fa-solid fa-users-between-lines"></i>
         所属グループを見る
       <% end %>
-      <div class="text-right">
-        <%= link_to 'ユーザー情報の編集', edit_user_path(user), class: "btn btn-secondary mb-3" %>
-      </div>
+      <% unless user.guest_user? %>
+        <div class="text-right">
+          <%= link_to 'ユーザー情報の編集', edit_user_path(user), class: "btn btn-secondary mb-3" %>
+        </div>
+      <% end %>
     <% end %>
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>コメント</strong>

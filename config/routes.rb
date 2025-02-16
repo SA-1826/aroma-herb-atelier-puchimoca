@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    devise_scope :user do
+      post 'guest_login', to: 'users/sessions#guest_login'
+    end
     resources :users, only: [:edit, :update, :show]
     get '/mypage' => 'users#mypage', as: "mypage"
     patch 'users/:id/withdraw' => 'users#withdraw', as: "withdraw_user"

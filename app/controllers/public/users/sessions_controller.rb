@@ -18,6 +18,12 @@ class Public::Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  def guest_login
+    @user = User.guest
+    sign_in(@user)
+    redirect_to mypage_path, notice: "ゲストユーザーでログインしました"
+  end
 
   protected
 
