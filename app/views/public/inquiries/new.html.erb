@@ -12,6 +12,9 @@
       <div>
         <%= f.label :email, "メールアドレス" %><br>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <p style="font-size: 12px;">
+          ※お問い合わせへの回答はご入力いただくメールアドレスへお送りいたします。お間違いがないようご確認ください。
+        </p>
       </div>
       <div>
         <%= f.label :title, "件名" %><br>
