@@ -2,7 +2,16 @@ class Admin::InquiriesController < ApplicationController
   layout 'admin'
   
   def index
-    @inquiries = Inquiry.page(params[:inquiries_page]).per(6)
+    inquiries = Inquiry.all
+    case params[:sort]
+    when "created_at_desc"
+      inquiries = inquiries.order(created_at: :desc)
+    when "status_asc"
+      inquiries = inquiries.order(status: :asc)
+    else
+      inquiries = inquiries.order(created_at: :desc)
+    end
+    @inquiries = inquiries.page(params[:inquiries_page]).per(6)
     @total_inquiries_count = Inquiry.all.count
   end
 
