@@ -25,6 +25,14 @@
       </div>
       <div class="row mb-1">
         <div class="col-3 text-center py-1" style="background-color: rgba(165, 143, 134, 0.2);">
+          開始時刻
+        </div>
+        <div class="col-9 py-1">
+          <%= @program.start_time.strftime("%H:%M") %>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-3 text-center py-1" style="background-color: rgba(165, 143, 134, 0.2);">
           所要時間
         </div>
         <div class="col-9 py-1">

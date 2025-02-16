@@ -1,2 +1,16 @@
-<h1>Admin::Searches#search</h1>
-<p>Find me in app/views/admin/searches/search.html.erb</p>
+<% if @model == 'program'%>
+	<h3>講座の検索結果 検索ワード "<%= @content %>"</h3>
+  <%= render 'admin/programs/index', programs: @records %>
+<% elsif @model == 'group' %>
+	<h3>グループの検索結果 検索ワード "<%= @content %>"</h3>
+  <%= render 'admin/groups/index', groups: @records %>
+<% elsif @model == 'user' %>
+	<h3>ユーザーの検索結果 検索ワード "<%= @content %>"</h3>
+  <%= render 'admin/users/index', users: @records %>
+<% elsif @model == 'post' %>
+	<h3>投稿の検索結果 検索ワード "<%= @content %>"</h3>
+  <%= render 'admin/posts/index', posts: @records %>
+<% elsif @model == 'comment' %>
+	<h3>コメントの検索結果 検索ワード "<%= @content %>"</h3>
+  <%= render 'admin/comments/index', comments: @records %>
+<% end %>

@@ -2,7 +2,7 @@ class Admin::CommentsController < ApplicationController
   layout 'admin'
   
   def index
-    @comments = Comment.page(params[:comments_page])
+    @comments = Comment.page(params[:comments_page]).per(6)
     @total_comments_count = Comment.all.count
   end
 

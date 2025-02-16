@@ -30,4 +30,16 @@ class Program < ApplicationRecord
     end
     image.variant(resize_to_limit: [600, 600]).processed
   end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Program.where(title: content)
+    elsif method == 'forward'
+      Program.where('title Like ?', content + '%')
+    elsif method == 'backword'
+      Program.where('title Like ?', '%' + content)
+    else
+      Program.where('title Like ?', '%' + content + '%')
+    end
+  end
 end

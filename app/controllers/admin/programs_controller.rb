@@ -21,7 +21,7 @@ class Admin::ProgramsController < ApplicationController
   end
 
   def index
-    @programs = Program.page(params[:programs_page])
+    @programs = Program.page(params[:programs_page]).per(6)
     @total_programs_count = Program.all.count
   end
 

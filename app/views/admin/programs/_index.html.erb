@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-end mb-1">
+  <%= paginate programs, param_name: 'programs_page' %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr style="background-color: rgba(165, 143, 134, 0.2);">
+      <th>ステータス</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>カテゴリー</th>
+      <th>開催日時</th>
+      <th>作成日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% programs.each do |program| %>
+      <tr>
+        <td>
+          <%= "#{I18n.t("enums.program.publish_status.#{program.publish_status}")}" %>
+        </td>
+        <td>
+          <%= image_tag program.get_image, size: "100x80" %>
+        </td>
+        <td>
+          <%= link_to edit_admin_program_path(program) do %>
+            <%= program.title %>
+          <% end %>
+        </td>
+        <td>
+          <%= program.category.name %>
+        </td>
+        <td>
+          <%= program.start_time.strftime("%Y/%m/%d %H:%M") %>
+        </td>
+        <td>
+          <%= program.created_at.strftime("%Y/%m/%d") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="d-flex justify-content-end mb-1">
+  <%= paginate programs, param_name: 'programs_page' %>
+</div>

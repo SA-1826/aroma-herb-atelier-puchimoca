@@ -27,4 +27,16 @@ class Group < ApplicationRecord
   def includesUser?(user)
     group_users.exists?(user_id: user.id)
   end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Group.where(name: content)
+    elsif method == 'forward'
+      Group.where('name Like ?', content + '%')
+    elsif method == 'backword'
+      Group.where('name Like ?', '%' + content)
+    else
+      Group.where('name Like ?', '%' + content + '%')
+    end
+  end
 end

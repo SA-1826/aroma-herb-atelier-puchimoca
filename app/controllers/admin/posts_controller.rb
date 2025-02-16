@@ -2,13 +2,13 @@ class Admin::PostsController < ApplicationController
   layout 'admin'
   
   def index
-    @posts = Post.page(params[:posts_page])
+    @posts = Post.page(params[:posts_page]).per(6)
     @total_posts_count = Post.all.count
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.page(params[:comments_page])
+    @comments = @post.comments.page(params[:comments_page]).per(6)
     @total_comments_count = @post.comments.count
   end
 

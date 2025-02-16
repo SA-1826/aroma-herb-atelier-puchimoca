@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-end mb-1">
+  <%= paginate users, param_name: 'users_page' %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr style="background-color: rgba(165, 143, 134, 0.2);">
+      <th>ユーザー名</th>
+      <th>ユーザーステータス</th>
+      <th>登録日</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to admin_user_path(user) do %>
+            <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= user.is_active ? "有効" : "無効" %>
+        </td>
+        <td>
+          <%= user.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          <%= user.updated_at.strftime('%Y/%m/%d') %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="d-flex justify-content-end mt-1">
+  <%= paginate users, param_name: 'users_page' %>
+</div>

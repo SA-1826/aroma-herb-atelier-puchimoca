@@ -6,6 +6,19 @@
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>講座一覧</strong>
     </p>
+    <div class="text-right my-1">
+      <%= form_tag programs_path, method: :get do %>
+        <%= select_tag :sort, options_for_select(
+          {
+            "新着順" => "created_at_desc",
+            "開催日時順" => "start_time_asc",
+            "カテゴリー順" => "category_asc"
+          },
+          params[:sort]
+        ) %>
+        <%= submit_tag "実行", class: "btn btn-outline-secondary py-1" %>
+      <% end %>
+    </div>
     <ul class="list-group">
       <% @programs.each do |program| %>
         <%= link_to program_path(program) do %>
