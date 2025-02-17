@@ -7,6 +7,7 @@
     <p class="pl-1 py-2" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>件名：<%= @inquiry.title %></strong>
     </p>
+    <p>問い合わせ者：<%= @inquiry.email %></p>
     <div>
       <%= form_with model: [:admin, @inquiry] do |f| %>
         <%= f.select :status, Inquiry.statuses.keys.map { |status| [I18n.t("enums.inquiry.status.#{status}"), status] } %>

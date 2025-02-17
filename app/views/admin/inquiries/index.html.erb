@@ -41,6 +41,7 @@
           </td>
           <td>
             <%= inquiry.created_at.strftime('%Y/%m/%d') %>
+            <%= inquiry.created_at.strftime('%H:%M') %>
           </td>
         </tr>
       <% end %>
