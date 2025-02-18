@@ -31,15 +31,6 @@ class Program < ApplicationRecord
    image.variant(resize_to_limit: [600, 600]).processed
   end
 
-  #def get_image
-  #  if image.attached?
-  #    image.variant(resize_to_limit: [600, 600]).processed
-  #  else
-  #    file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #    image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
-  #  end
-  #end
-
   def self.search_for(content, method)
     if method == 'perfect'
       Program.where(title: content)

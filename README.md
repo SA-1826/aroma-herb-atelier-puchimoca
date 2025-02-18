@@ -25,6 +25,9 @@
 ​
 ## 設計書
 - [詳細設計書](https://docs.google.com/spreadsheets/d/1ZtRe9ItSrU87X3Yw8DH-QKeI0U9_QLmvx4H_xGrp8g4/edit?gid=549108681#gid=549108681)
+- [テーブル設計書](https://docs.google.com/spreadsheets/d/19I_cgVlfrlFGPPXKSM_1ahIAaB9JXKG17MJwAwBomMw/edit?gid=1833438579#gid=1833438579)
+- [UIFlows](https://app.diagrams.net/#G1p57FRI6JnXaQW9mkMVh_xuhN0fxZHkpd#%7B%22pageId%22%3A%22WBBe1jwM1DSf4_QIF7V9%22%7D)
+- [ER図](https://app.diagrams.net/#G1x4Pj4P0w1QqcScj8cHAz2CFJP10eexI8#%7B%22pageId%22%3A%22LkA-50vI9zVlM_wPANrl%22%7D)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
