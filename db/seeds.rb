@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "seedの実行を開始しました"
 
-admin = Admin.create!(email: "admin@test.com", password: "password")
+admin = Admin.create!(email: "admin@test.com", password: "#{ENV['PASSWORD']}")
 
 category_names = %w(
   資格対応ーアロマ

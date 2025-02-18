@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
-  before_action :ensure_guest_user, only: [:edit]
+  #before_action :ensure_guest_user, only: [:edit]
 
   def mypage
     @user = current_user
@@ -16,8 +16,9 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+    user_attributes = current_user.guest_user? ? guest_user_params : user_params
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(user_attributes)
       flash[:notice] = "変更を保存しました"
       redirect_to user_path(@user)
     else
@@ -57,6 +58,10 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def guest_user_params
+    params.require(:user).permit(:name)
   end
 
   def ensure_guest_user

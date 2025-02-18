@@ -7,8 +7,8 @@
       <strong>講座一覧</strong>
     </p>
     <div class="text-right my-1">
-      <%= form_tag programs_path, method: :get do %>
-        <%= select_tag :sort, options_for_select(
+      <%= form_with url: programs_path, method: :get do |f| %>
+        <%= f.select :sort, options_for_select(
           {
             "新着順" => "created_at_desc",
             "開催日時順" => "start_time_asc",
@@ -16,6 +16,8 @@
           },
           params[:sort]
         ) %>
+        <%= f.date_field :start_date, value: params[:start_date] %>~
+        <%= f.date_field :end_date, value: params[:end_date] %>
         <%= submit_tag "実行", class: "btn btn-outline-secondary py-1" %>
       <% end %>
     </div>

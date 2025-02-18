@@ -24,7 +24,7 @@
 - 講座に関する質問があるとき
 ​
 ## 設計書
-後ほど作成予定
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1ZtRe9ItSrU87X3Yw8DH-QKeI0U9_QLmvx4H_xGrp8g4/edit?gid=549108681#gid=549108681)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,7 +34,7 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- no-image画像：illustAC, url:https://www.ac-illust.com/main/detail.php?id=24660942&word=NO++IMAGE&data_type=&from_order_history=&downloader_register=success
+- no-image画像：[illustAC](https://www.ac-illust.com/main/detail.php?id=24660942&word=NO++IMAGE&data_type=&from_order_history=&downloader_register=success)
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
 <!-- - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。 -->
 <!-- - 使用しない場合は、使用素材の項目をREADMEから削除してください。 -->

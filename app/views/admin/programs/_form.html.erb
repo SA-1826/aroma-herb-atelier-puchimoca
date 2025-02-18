@@ -3,7 +3,7 @@
     <div class="col-lg-8">
       <%= render 'layouts/error_messages', model: f.object %>
       <div id="image-preview" class="mb-3">
-        <%= image_tag program.get_image, size: "300x240" %><br>
+        <%= image_tag program.get_image, size: "300x240" unless program.new_record? %><br>
       </div>
       <%= f.label :image, "画像" %>
       <%= f.file_field :image, accept: "image/*", class: "mb-3", id: 'image-upload' %><br>

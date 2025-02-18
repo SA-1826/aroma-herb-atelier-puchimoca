@@ -10,10 +10,12 @@
               <label for="user_name">ユーザー名</label>
               <%= f.text_field :name, class: "form-control user_name" %>
             </div>
+            <% unless current_user.guest_user? %>
             <div class="form-group">
               <label for="user_email">メールアドレス</label>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control user_email" %>
             </div>
+            <% end %>
             <div class="form-group">
               <%= f.submit '変更を保存する', class: "btn btn-secondary btn-block" %>
             </div>
