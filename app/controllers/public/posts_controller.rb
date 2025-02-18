@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash.now[:danger] = "投稿に失敗しました"
+      @new_programs = Program.published.order(created_at: :desc).limit(3)
       render :new
     end
   end
