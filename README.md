@@ -38,6 +38,7 @@
 ​
 ## 使用素材
 - no-image画像：[illustAC](https://www.ac-illust.com/main/detail.php?id=24660942&word=NO++IMAGE&data_type=&from_order_history=&downloader_register=success)
+- Font：[`Klee One designed by Fontworks Inc.` from Google Font](https://fonts.google.com/specimen/Klee+One?script=Jpan&categoryFilters=Feeling:%2FExpressive%2FCute)
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
 <!-- - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。 -->
 <!-- - 使用しない場合は、使用素材の項目をREADMEから削除してください。 -->
