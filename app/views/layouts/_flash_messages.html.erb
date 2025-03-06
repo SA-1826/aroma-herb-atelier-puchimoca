@@ -3,8 +3,8 @@
     <%= notice %>
   </div>
 <% end %>
-<% if alert %>
+<% if alert || flash.now[:danger] %>
   <div class="alert alert-danger">
-    <%= alert %>
+    <%= alert || flash.now[:danger] %>
   </div>
 <% end %>

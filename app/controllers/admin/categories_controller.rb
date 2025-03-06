@@ -8,13 +8,20 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if @category.save
-      flash[:notice] = "カテゴリーを登録しました"
-      redirect_to admin_categories_path
-    else
-      flash.now[:danger] = "カテゴリーの登録に失敗しました"
+    existing_category = Category.find_by(name: category_params[:name])
+    if existing_category
+      flash.now[:danger] = "同じカテゴリー名が既に存在します"
       @categories = Category.all
       render :index
+    else
+      if @category.save
+        flash[:notice] = "カテゴリーを登録しました"
+        redirect_to admin_categories_path
+      else
+        flash.now[:danger] = "カテゴリーの登録に失敗しました"
+        @categories = Category.all
+        render :index
+      end
     end
   end
 
