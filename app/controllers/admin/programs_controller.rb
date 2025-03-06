@@ -12,10 +12,10 @@ class Admin::ProgramsController < ApplicationController
     end
     if @program.save
       @program.image.attach(params[:program][:image])
-      flash[:notice] = "投稿しました"
+      flash[:notice] = "作成しました"
       redirect_to edit_admin_program_path(@program)
     else
-      flash.now[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = "作成に失敗しました"
       render :new
     end
   end

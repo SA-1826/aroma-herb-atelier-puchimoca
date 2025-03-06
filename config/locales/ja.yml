@@ -7,6 +7,33 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      post: "投稿"
+      comment: "コメント"
+      group: "グループ"
+      inquiry: "問い合わせ"
+      program: "講座"
+      category: "カテゴリー"
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+      comment:
+        body: "コメント"
+      group:
+        name: "グループ名"
+        body: "紹介文"
+      inquiry:
+        email: "メールアドレス"
+        title: "件名"
+        body: "お問い合わせ内容"
+      program:
+        title: "講座名"
+        body: "紹介文"
+        start_time: "開催日時"
+        category: "カテゴリー"
+      category:
+        name: "カテゴリー名"
   date:
     abbr_day_names:
     - 日
