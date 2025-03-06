@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:posts_page]).per(6)
+    @posts = Post.order(created_at: :desc).page(params[:posts_page]).per(6)
     @total_posts_count = Post.all.count
     @new_programs = Program.published.order(created_at: :desc).limit(3)
   end
