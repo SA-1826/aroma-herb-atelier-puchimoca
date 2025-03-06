@@ -5,7 +5,7 @@
       <h4>カテゴリー新規登録</h4>
         <%= form_with model: [:admin, @category] do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
-          <%= f.label :name, "カテゴリー名" %>
+          <%= f.label :name, "カテゴリー名" %><br>
           <%= f.text_field :name %>
 
           <%= f.submit ' 登録 ', class: "btn btn-secondary mt-lg-3" %>
