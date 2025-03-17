@@ -11,19 +11,7 @@
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>投稿詳細</strong>
     </p>
-    <p>
-      <%= link_to user_path(@post.user) do %>
-        ＠ <%= @post.user.name %>
-      <% end %>
-      <span> ｜ </span>
-      <%= @post.created_at.strftime("%Y/%m/%d") %>
-    </p>
-    <p>
-      ＜<%= @post.title %>＞
-    </p>
-    <p class="wrap-text">
-      <%= simple_format @post.body %>
-    </p>
+    <%= render 'post_show', post: @post %>
     <% if @post.user_id == current_user.id %>
       <div class="text-right">
         <%= link_to '編集', edit_post_path(@post), class: "btn btn-secondary mb-3" %>
