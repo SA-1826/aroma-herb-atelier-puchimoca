@@ -31,19 +31,7 @@
     <p class="py-3 pl-1" style="background-color: rgba(165, 143, 134, 0.2);">
       <strong>コメントした投稿</strong>
     </p>
-    <p>
-      <%= link_to user_path(@post.user) do %>
-        ＠ <%= @post.user.name %>
-      <% end %>
-      <span> ｜ </span>
-      <%= @post.created_at.strftime("%Y/%m/%d") %>
-    </p>
-    <p>
-      ＜<%= @post.title %>＞
-    </p>
-    <p class="wrap-text">
-      <%= simple_format @post.body %>
-    </p>
+    <%= render 'public/posts/post_show', post: @post %>
   </div>
 </div>
 <div class="text-right my-3">
