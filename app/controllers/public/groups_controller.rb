@@ -42,7 +42,6 @@ class Public::GroupsController < ApplicationController
     @users = @group.users_include_owner
     @user_group_combinations = @group.user_group_combinations
     @join_groups = @user.participating_join_groups
-    #@join_groups = @user.user_group_combinations.is_participating.map(&:group)
     @owner_groups = @user.owner_groups
   end
 
