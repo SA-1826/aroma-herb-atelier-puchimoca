@@ -30,8 +30,8 @@
 - [ER図](https://app.diagrams.net/#G1x4Pj4P0w1QqcScj8cHAz2CFJP10eexI8#%7B%22pageId%22%3A%22LkA-50vI9zVlM_wPANrl%22%7D)
 
 ## 動作URL
-- [ユーザー側](http://54.249.74.64/)
-- [管理者側](http://54.249.74.64/admin/sign_in)
+- [ユーザー側URL](http://54.249.74.64/)
+- [管理者側URL](http://54.249.74.64/admin/sign_in)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
