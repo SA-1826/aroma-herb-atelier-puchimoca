@@ -53,6 +53,6 @@ class Admin::ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:image, :title, :body, :start_time, :publish_status, :time_required, :price, :category_id)
+    params.require(:program).permit(:image, :title, :body, :start_date, :start_time_only, :publish_status, :time_required, :price, :category_id)
   end
 end

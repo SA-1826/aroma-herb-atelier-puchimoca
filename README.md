@@ -38,7 +38,7 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Cloud9,VSCode
 ​
 ## 使用素材
 - no-image画像：[illustAC](https://www.ac-illust.com/main/detail.php?id=24660942&word=NO++IMAGE&data_type=&from_order_history=&downloader_register=success)
