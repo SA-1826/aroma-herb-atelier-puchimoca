@@ -31,6 +31,39 @@ class Program < ApplicationRecord
    image.variant(resize_to_limit: [600, 600]).processed
   end
 
+  def start_date
+    start_time&.to_date
+  end
+
+  def start_date=(date)
+    if date.present?
+      date = Date.parse(date) if date.is_a?(String)
+      if start_time.present?
+        self.start_time = start_time.change(year: date.year, month: date.month, day: date.day)
+      else
+        self.start_time = date.to_time
+      end
+    end
+  end
+
+  def start_time_only
+    return nil unless start_time.present?
+    
+    time_obj = start_time.is_a?(String) ? Time.parse(start_time) : start_time
+    time_obj.change(year: 2000, month: 1, day: 1)
+  end
+
+  def start_time_only=(time)
+    if time.present?
+      hour, minute = time.split(":").map(&:to_i)
+      if start_time.present?
+        self.start_time = start_time.change(hour: hour, min: minute)
+      else
+        self.start_time = Time.current.change(hour: hour, min: minute)
+      end
+    end
+  end
+
   def self.search_for(content, method)
     if method == 'perfect'
       Program.where(title: content)
