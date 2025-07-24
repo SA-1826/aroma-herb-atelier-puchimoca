@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
   end
 
   def create
@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash.now[:danger] = "投稿に失敗しました"
-      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      @new_programs = Program.published.order(updated_at: :desc).limit(3)
       render :new
     end
   end
@@ -21,13 +21,13 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc).page(params[:posts_page]).per(6)
     @total_posts_count = Post.all.count
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
   end
 
   def edit
     @post = Post.find(params[:id])
     @total_comments_count = @post.comments.all.count
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     if @post.comments.present?
       @comments = @post.comments.page(params[:comments_page]).per(6)
     else
@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
     else
       flash.now[:danger] = "更新に失敗しました"
       @total_comments_count = @post.comments.all.count
-      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      @new_programs = Program.published.order(updated_at: :desc).limit(3)
       if @post.comments.present?
         @comments = @post.comments.page(params[:comments_page]).per(6)
       else
@@ -57,7 +57,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @total_comments_count = @post.comments.all.count
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     if @post.comments.present?
       @comments = @post.comments.page(params[:comments_page]).per(6)
     else

@@ -4,7 +4,7 @@ class Public::GroupsController < ApplicationController
   def new
     @group = Group.new
     @user = current_user
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     @join_groups = @user.join_groups
     @owner_groups = @user.owner_groups
   end
@@ -19,7 +19,7 @@ class Public::GroupsController < ApplicationController
     else
       flash.now[:danger] = "グループの作成に失敗しました"
       @user = current_user
-      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      @new_programs = Program.published.order(updated_at: :desc).limit(3)
       @join_groups = @user.join_groups
       @owner_groups = @user.owner_groups
       render :new
@@ -27,7 +27,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     @groups = Group.page(params[:groups_page])
     @total_groups = Group.all
     @user = current_user
@@ -38,7 +38,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = current_user
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     @users = @group.users_include_owner
     @user_group_combinations = @group.user_group_combinations
     @join_groups = @user.participating_join_groups
@@ -48,7 +48,7 @@ class Public::GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
     @user = current_user
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     @join_groups = @user.join_groups
     @owner_groups = @user.owner_groups
   end
@@ -61,7 +61,7 @@ class Public::GroupsController < ApplicationController
     else
       flash.now[:danger] = "更新に失敗しました"
       @user = current_user
-      @new_programs = Program.published.order(created_at: :desc).limit(3)
+      @new_programs = Program.published.order(updated_at: :desc).limit(3)
       @join_groups = @user.join_groups
       @owner_groups = @user.owner_groups
       render :edit
