@@ -11,7 +11,7 @@ class Public::CommentsController < ApplicationController
     else
       flash.now[:danger] = "コメントの投稿に失敗しました"
       @total_comments_count = @post.comments.all.count
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
     if @post.comments.present?
       @comments = @post.comments.page(params[:comments_page]).per(6)
     else
@@ -25,7 +25,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @post = @comment.post
     @total_comments_count = @post.comments.count
-    @new_programs = Program.published.order(created_at: :desc).limit(3)
+    @new_programs = Program.published.order(updated_at: :desc).limit(3)
   end
 
   def destroy
